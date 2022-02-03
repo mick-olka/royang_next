@@ -1,0 +1,52 @@
+
+.info_page {
+    max-width: 60rem;
+    margin: 0 auto 5rem;
+}
+
+.article {
+    margin: 1rem;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+}
+
+.article_header {
+    font-weight: bolder;
+    font-size: 3rem;
+    margin: 2rem;
+}
+
+.article span {
+    display: block;
+    height: 7.5rem;
+}
+
+.article_part {
+    margin: 1rem 0;
+    text-indent: 5rem;
+}
+
+.gallery_img_div {
+    margin: 1rem auto;
+}
+
+.gallery_div {
+    position: relative;
+    width: 30rem;
+    margin: 1rem auto;
+}
+
+.colors_div {
+    font-size: 1.1rem;
+    width: 30rem;
+    margin-left: 2rem;
+}
+
+.colors_div img {
+    margin-bottom: 2rem !important;
+    width: 15rem !important;
+}
+
+.colors_div strong {
+    font-weight: bolder;
+}

@@ -1,0 +1,109 @@
+.header {
+    width: 100%;
+    /*background-color: #eee8d5;*/
+    display: flex;
+    /*border-bottom: 1px solid var(--c_black_purple);*/
+    /*box-shadow: 2px 2px 3px 0 rgba(0,0,0,0.55);*/
+}
+
+.header_container {
+    min-width: 50rem;
+    width: 100%;
+    top: 0;
+    position: fixed;
+    z-index: 100;
+    background-color: #fff;
+}
+
+.horizontal_navbar {
+    /*top: 4rem;*/
+    /*height: 4rem;*/
+    /*left: 7rem;*/
+    position: relative;
+    width: 100%;
+    z-index: 100;
+    background-color: #fff;
+}
+
+.horizontal_navbar nav {
+    display: flex !important;
+    justify-content: center;
+}
+
+.horizontal_navbar nav div {
+    margin: 0 1rem 0.3rem;
+}
+
+.name_div{
+    right: 0;
+    color: var(--c_black_purple);
+    font-weight: bolder;
+    font-size: 3rem;
+    padding: 0.5rem;
+    justify-content: space-around;
+    margin: 0 2rem;
+    font-family: 'Kanit', sans-serif;
+    text-shadow: 1px 1px black;
+}
+
+.phones_div {
+    text-align: left;
+    margin-left: auto;
+    min-width: 9rem;
+}
+
+.header_text_div {
+    text-align: center;
+    width: available;
+    display: flex;
+    align-items: center;
+}
+
+.cart_div {
+    /*flex: 1 1 auto;*/
+    margin: 1rem 3rem;
+    position: relative;
+    top: 1rem;
+    min-width: 3rem !important;
+    min-height: 3rem !important;
+}
+
+.cart_icon {
+
+}
+
+.or_l {
+    color: var(--c_orange);
+}
+
+.bor_l {
+    color: var(--c_orange);
+}
+
+.bl_l {
+    color: var(--c_black_purple);
+}
+
+.gr_l {
+    color: var(--c_grey);
+}
+
+.call_time_div {
+    font-weight: bolder;
+    margin-left: 0;
+    align-self: center;
+}
+
+.phone_li {
+    margin: 0.3rem;
+}
+
+@media screen and (max-width: 1200px) {
+    .cart_div {
+        margin: 0 1rem;
+    }
+
+    .horizontal_navbar nav a {
+        font-size: 1.1rem !important;
+    }
+}
