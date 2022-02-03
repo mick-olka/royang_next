@@ -48,7 +48,7 @@ export default function MainLayout({ children, lists }) {
             </main>
 
             <footer className={styles.footer}>
-                <pre>Rotang.ua          |         <a href={'http://178.54.240.228:7878'} rel="noopener noreferrer" target="_blank" >admin</a>           |           2022</pre>
+                <pre>Rotang.ua          |         <a style={{display: "inline"}} href={'http://178.54.240.228:7878'} rel="noopener noreferrer" target="_blank" >admin</a>           |           2022</pre>
             </footer>
         </div>
     )

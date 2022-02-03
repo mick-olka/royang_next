@@ -12,23 +12,6 @@ function MyApp({ Component, pageProps }) {
       _id: null,
     },
   });
-  //
-  // const delCartItemByIndex = (index) => {
-  //   let cartCopy = [...cartData.cart];
-  //   cartCopy.splice(index, 1);
-  //   setCartData({...cartData, cart: cartCopy});
-  // }
-  //
-  // const createOrder = (data) => {
-  //   //  fetch order creation
-  //   fetchNewOrder(data);
-  // };
-  //
-  // const updateItemCount = (index, count) => {
-  //   let cartCopy = [...cartData.cart];
-  //   cartCopy[index].count = count;
-  //   setCartData({...cartData, cart: cartCopy});
-  // }
 
   const addItemToCart = (data) => {
     setCartData({...cartData, cart: [...cartData.cart, data]});
