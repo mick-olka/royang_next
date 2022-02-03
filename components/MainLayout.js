@@ -63,7 +63,7 @@ export default function MainLayout({ children }) {
             </main>
 
             <footer className={styles.footer}>
-                <pre>Rotang.ua          |         admin           |           2022</pre>
+                <pre>Rotang.ua          |         <a href={'http://178.54.240.228:7878'} target="_blank" >admin</a>           |           2022</pre>
             </footer>
         </div>
     )
