@@ -117,7 +117,7 @@ function ProductPage({productData, addItemToCart}) {
 
                 {productData.relatedProducts.length>0 &&
                 <div className={s.related_products_div}>
-                    <h2>Пов'язані товари</h2>
+                    <h2>Пов&apos;язані товари</h2>
                     <SectionsPane products={productData.relatedProducts}/>
                 </div>
                 }

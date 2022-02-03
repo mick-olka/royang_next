@@ -13,6 +13,7 @@ function Colors({colors}) {
             width={640}
             height={640}
             objectFit={'contain'}
+            alt='color_photo'
         /></div>
     }
 

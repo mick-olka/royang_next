@@ -1,30 +1,25 @@
 import Head from 'next/head'
 import MainLayout from "../../components/MainLayout";
-import {useEffect, useState} from "react";
-import {getColorsPhotos} from "../../lib/fetch_data";
+import {getAllLists, getColorsPhotos} from "../../lib/fetch_data";
 import Colors from "../../components/info_page/Colors";
 
 
 export async function getStaticProps({ params }) {
     const colors = await getColorsPhotos();
+    const lists = await getAllLists();
     return {
         props: {
-            colors
+            colors,
+            lists
         },
         // revalidate: 5,
     }
 }
 
-export default function ColorsIndex({colors}) {
-
-    // const [gallery, setGallery] = useState([]);
-    // useEffect(async () => {
-    //     let colorsList = await getColorsPhotos();
-    //     setGallery(colorsList);
-    // }, []);
+export default function ColorsIndex({colors, lists}) {
 
   return (
-      <MainLayout main>
+      <MainLayout lists={lists} main>
       <Head>
         <title>Colors</title>
       </Head>

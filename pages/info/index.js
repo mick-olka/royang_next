@@ -2,11 +2,22 @@ import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 import MainLayout from "../../components/MainLayout";
 import InfoPage from "../../components/info_page/InfoPage";
+import {getAllLists} from "../../lib/fetch_data";
 
-export default function Main({myProps}) {
+export async function getStaticProps({ params }) {
+    const lists = await getAllLists();
+    return {
+        props: {
+            lists
+        },
+        // revalidate: 5,
+    }
+}
+
+export default function Main({lists}) {
 
   return (
-      <MainLayout main>
+      <MainLayout lists={lists} main>
       <Head>
         <title>Info</title>
       </Head>

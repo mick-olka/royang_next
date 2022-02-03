@@ -4,7 +4,7 @@ import Router, { useRouter } from "next/router";
 import SectionsPane from "../SectionsPane/SectionsPane";
 import Paginator from "../paginator/Paginator";
 
-export default function ProductsListPane ({prodList, paginatorData, headerText}) {
+export default function ProductsListPane ({prodList, paginatorData, headerText, lists}) {
     const [products, setProducts] = useState([])
     const router = useRouter();
     const [loading, setLoading] = useState(false)
@@ -40,7 +40,7 @@ export default function ProductsListPane ({prodList, paginatorData, headerText})
     }
 
     return (
-        <MainLayout>
+        <MainLayout lists={lists} >
             {loading ? <h2>Loader...</h2> :
                 <div>
                     <h2 style={{margin: "1rem 0",textAlign: "center", fontSize: "1.5rem"}} >{headerText && headerText}</h2>

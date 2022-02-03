@@ -12,6 +12,11 @@
 .content_pane {
     position: relative;
     width: 100%;
+    margin-left: 15rem;
+}
+
+.nav_pane {
+    position: fixed;
 }
 
 .header {

@@ -3,7 +3,7 @@ import OrderForm from "./OrderForm";
 import s from "./OrderPage.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import {fetchNewOrder} from "../../lib/fetch_data";
+import Image from "next/image";
 
 function OrderPage({cartData, deleteItemByIndex, createOrder, updateItemCount}) {
 
@@ -39,7 +39,7 @@ function OrderPage({cartData, deleteItemByIndex, createOrder, updateItemCount}) 
                 {cartData.cart.length<1 && <p>Корзина пуста</p>}
                 {cartData.cart.length>0 && cartData.cart.map((item, i)=>{
                     return <div key={item.code} className={s.cart_item} > {/*need more complex key*/}
-                        <img className={s.thumbnail} src={item.photo} alt="prod_img"/>
+                        <Image className={s.thumbnail} src={item.photo} alt="prod_img"/>
                         <p><Link href={"products/"+item.product} passHref ><a>{item.name}</a></Link></p>
                         <p>колір: {item.mainColor}/{item.pillColor}</p>
                         <span>к-ть: </span><input type="number" onChange={

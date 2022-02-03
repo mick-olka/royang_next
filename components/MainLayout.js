@@ -2,23 +2,11 @@ import Head from 'next/head'
 import styles from './layout.module.css'
 import Navbar from "./navbar/Navbar";
 import Header from "./header/Header";
-import {useEffect, useState} from "react";
-import {getAllLists} from "../lib/fetch_data";
 import Search from "./search/Search";
 
 export const siteTitle = 'Rotang.ua';
 
-export default function MainLayout({ children }) {
-    // const links = [
-    //     {name: 'Home', url: '/'},
-    //     {name: 'Order', url: '/order'},
-    //     {name: 'Gallery', url: '/gallery'},
-    // ];
-    const [lists, setLists] = useState([]);
-    const headerLinks = [
-        {name: 'Gallery', url: '/gallery'},
-        {name: 'Sales', url: '/'}
-    ];
+export default function MainLayout({ children, lists }) {
     const header_links = [
         {url: '/gallery', name: "Галерея Фото"},
         {url: '/colors', name: "Вибір Кольору"},
@@ -29,10 +17,7 @@ export default function MainLayout({ children }) {
         {url: '/info#rotang', name: "Про Ротанг"},
         {url: '/info#payment', name: "Оплата"},
     ];
-    useEffect(async () => {
-        let lists = await getAllLists();
-        setLists(lists);
-    }, []);
+
     return (
         <div className={styles.container}>
             <Head>
@@ -55,15 +40,15 @@ export default function MainLayout({ children }) {
             <Header links={header_links} />
 
             <main className={styles.main_block} >
-                <div>
+                <div className={styles.nav_pane} >
                     <Search />
-                <Navbar links={lists} />
+                <Navbar links={lists || []} />
                 </div>
             <div className={styles.content_pane} >{children}</div>
             </main>
 
             <footer className={styles.footer}>
-                <pre>Rotang.ua          |         <a href={'http://178.54.240.228:7878'} target="_blank" >admin</a>           |           2022</pre>
+                <pre>Rotang.ua          |         <a href={'http://178.54.240.228:7878'} rel="noopener noreferrer" target="_blank" >admin</a>           |           2022</pre>
             </footer>
         </div>
     )

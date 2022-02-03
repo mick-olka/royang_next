@@ -4,6 +4,7 @@ import "./MainSlider.css";
 import s from "./Slider.module.css";
 import {compose} from "redux";
 import {connect} from "react-redux";
+import Image from "next/image";
 
 class MainSlider extends Component {
 
@@ -74,7 +75,7 @@ class MainSlider extends Component {
                             <a
                                 target="_blank" rel="noopener noreferrer"
                                 href={i.nav_link} >
-                            <img src={i.img} alt="slide_img" className={s.m_slide_img} />
+                            <Image src={i.img} alt="slide_img" className={s.m_slide_img} />
                             <div className={s.text_div} >
                                 <h3>{i.text}</h3>
                                 <p>{i.lower_text}</p>

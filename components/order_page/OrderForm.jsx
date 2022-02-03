@@ -46,7 +46,7 @@ function OrderForm({onSubmit}) {
         <div>
             <form onSubmit={formik.handleSubmit}>
                 <div className={s.form_input_item} >
-                <label htmlFor="name">Ім'я</label>
+                <label htmlFor="name">Ім&apos;я</label>
                 {myFormInput("name", "text", formik.values.name, formik.handleChange)}
                     {formik.errors.name ? <div>{formik.errors.name}</div> : null}
                 </div>
