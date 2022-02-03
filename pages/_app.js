@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import {useState} from "react";
 import {useRouter} from "next/router";
+import Head from "next/head";
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [color, setColor] = useState("blue");
@@ -48,9 +49,12 @@ function MyApp({ Component, pageProps }) {
     }
   };
 
-  return <div>
+  return <>
+    <Head>
+      <meta name="viewport" content="width=960px, initial-scale=0" />
+    </Head>
     <Component myProps={myProps} orderPageProps={orderPageProps} {...pageProps} />
-  </div>
+  </>
 }
 
 export default MyApp;
