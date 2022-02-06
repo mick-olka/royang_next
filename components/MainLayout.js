@@ -3,6 +3,9 @@ import styles from './layout.module.css'
 import Navbar from "./navbar/Navbar";
 import Header from "./header/Header";
 import Search from "./search/Search";
+import s from "./header/Header.module.css";
+import React from "react";
+import global_data from "../utils/global_data";
 
 export const siteTitle = 'Rotang.ua';
 
@@ -40,9 +43,26 @@ export default function MainLayout({ children, lists }) {
             <Header links={header_links} />
 
             <main className={styles.main_block} >
-                <div className={styles.nav_pane} >
+                <div className={styles.nav_pane} id="menu_pane" >
                     <Search />
                 <Navbar links={lists || []} />
+                    <div className={styles.mobile_list} >
+                        <br/>
+                        <Navbar links={header_links} />
+                        <br/>
+                        <h3 style={{fontSize: "1.3rem", fontWeight: "bolder"}} >Контакти</h3>
+                        <div className={styles.menu_contacts} >
+                            <ul>
+                                <li className={s.phone_li}><a href={"tel:" + global_data.phones[0]}>📞 {global_data.phones[0]}</a>
+                                </li>
+                                <li className={s.phone_li}><a href={"tel:" + global_data.phones[1]}>📞 {global_data.phones[1]}</a>
+                                </li>
+                                <li className={s.phone_li}><a href={"tel:" + global_data.phones[2]}>📞 {global_data.phones[2]}</a>
+                                </li>
+                            </ul>
+                            <p>з 9:00 по 20:00</p>
+                        </div>
+                    </div>
                 </div>
             <div className={styles.content_pane} >{children}</div>
             </main>

@@ -1,118 +1,17 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-
-/* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
 
 html {
-  min-width: 940px;
   background-color: var(--c_white);
+  min-width: 300px;
 }
 
-body {
-  position: relative;
-  line-height: 1;
-}
-ol, ul {
-  list-style: none;
-}
-blockquote, q {
-  quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-  monospace;
-}
-
-:root {
-  --c_white: #fff;
-  --c_grey: #A4ACA5;
-  --c_orange: #c55a03;
-  --c_bright_orange: #f8cca4;
-  --c_transparent_orange: rgba(234, 99, 5, 0.82);
-  --c_black_purple: #25192B;
-  overflow-x: hidden;
-}
-
-body, .root, .middle_pane {
-  position: relative;
-  height: fit-content;
-}
-
-button {
-  background-color: var(--c_transparent_orange);
-  border: 1px solid lightgrey;
-  color: black;
-}
-
-button:hover {
-  opacity: 0.5;
-}
 /*thumbnails in slider*/
 ._t1897 {
   object-fit: contain !important;
+}
+
+@media screen and (min-width: 1024px) {
+
 }
 
 @media screen and (max-width: 1024px) {
@@ -128,69 +27,22 @@ button:hover {
   }
 }
 
-.App {
-  /*text-align: center;*/
-  font-family: 'Rubik', inherit;
-  background-color: var(--c_white);
-  min-height: 100%;
+.main_page_text {
+  position: relative;
+  top: 8rem;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.3rem;
 }
 
-*::-webkit-scrollbar,
-*::-webkit-scrollbar-thumb {
-  width: 40px;
-  border-radius: 13px;
-  background-clip: padding-box;
-  border: 10px solid transparent;
+.main_page_text p {
+  margin: 1rem;
 }
 
-*::-webkit-scrollbar-thumb {
-  box-shadow: inset 0 0 0 10px;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media screen and (max-width: 960px) {
+  .main_page_text {
+    top: 5rem;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-input[type=checkbox]
-{
-  /* Double-sized Checkboxes */
-  -ms-transform: scale(2); /* IE */
-  -moz-transform: scale(2); /* FF */
-  -webkit-transform: scale(2); /* Safari and Chrome */
-  -o-transform: scale(2); /* Opera */
-  transform: scale(2);
-  padding: 10px;
-}
-
 

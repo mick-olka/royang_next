@@ -1,22 +1,25 @@
 
 .container {
-    margin-top: 6rem;
+    margin-top: 8rem;
 }
 
 .main_block {
-    display: flex;
     padding-top: 1rem;
     padding-bottom: 2rem;
 }
 
 .content_pane {
     position: relative;
-    width: 100%;
-    margin-left: 15rem;
+    width: 60%;
+    margin: 0 auto;
 }
 
 .nav_pane {
     position: fixed;
+    width: available;
+    padding-left: 1rem;
+    z-index: 500;
+    transition: left 0.5s;
 }
 
 .header {
@@ -47,4 +50,50 @@
 
 .footer pre {
     font-family: inherit;
+}
+
+.mobile_list {
+    display: none;
+}
+
+.menu_contacts {
+    max-width: 25rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+
+.menu_contacts li {
+    text-decoration: underline;
+    margin: 0.8rem 0;
+}
+.menu_contacts p {
+    margin-left: 3rem;
+    font-weight: bolder;
+}
+
+@media screen and (max-width: 960px) {
+    .container {
+        margin-top: 5rem;
+    }
+    .nav_pane {
+        top: 4rem;
+        left: -110%;
+        background-color: #fff;
+        width: 100%;
+        height: 100%;
+        padding-top: 1rem;
+        overflow-y: auto;
+        padding-bottom: 3rem;
+    }
+    .content_pane {
+        width: 100%;
+    }
+
+    .mobile_list {
+        display: block;
+    }
+    .text_block {
+        width: 100%;
+    }
 }

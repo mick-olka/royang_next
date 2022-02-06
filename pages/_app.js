@@ -1,4 +1,5 @@
-import '../styles/globals.css'
+import '../styles/basic.css';
+import '../styles/globals.css';
 import {useState} from "react";
 import {useRouter} from "next/router";
 import Head from "next/head";
@@ -34,7 +35,8 @@ function MyApp({ Component, pageProps }) {
 
   return <>
     <Head>
-      <meta name="viewport" content="width=960px, initial-scale=0" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+      <title>Rotang.ua</title>
     </Head>
     <Component myProps={myProps} orderPageProps={orderPageProps} {...pageProps} />
   </>

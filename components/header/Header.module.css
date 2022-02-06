@@ -1,7 +1,8 @@
 .header {
     width: 100%;
     /*background-color: #eee8d5;*/
-    display: flex;
+    display: grid;
+    grid-template: "l l t t t p p ct c";
     /*border-bottom: 1px solid var(--c_black_purple);*/
     /*box-shadow: 2px 2px 3px 0 rgba(0,0,0,0.55);*/
 }
@@ -27,6 +28,7 @@
 
 .horizontal_navbar nav {
     display: flex !important;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -35,6 +37,7 @@
 }
 
 .name_div{
+    grid-area: l;
     right: 0;
     color: var(--c_black_purple);
     font-weight: bolder;
@@ -46,24 +49,37 @@
     text-shadow: 1px 1px black;
 }
 
+.menu_btn {
+    font-size: 3rem;
+    grid-area: b;
+    display: none;
+    margin-left: 0.5rem;
+}
+
 .phones_div {
+    grid-area: p;
     text-align: left;
     margin-left: auto;
     min-width: 9rem;
 }
 
+.call_time_div {
+    grid-area: ct;
+}
+
 .header_text_div {
-    text-align: center;
+    grid-area: t;
     width: available;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
 .cart_div {
+    grid-area: c;
     /*flex: 1 1 auto;*/
     margin: 1rem 3rem;
     position: relative;
-    top: 1rem;
     min-width: 3rem !important;
     min-height: 3rem !important;
 }
@@ -98,12 +114,47 @@
     margin: 0.3rem;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 960px) {
+
+    .header {
+        grid-template: "b b l l l l l l l l l l l c c" "t t t t t t t t t t t t t t t";
+    }
+
+    .name_div {
+        align-items: center;
+        font-size: 2rem;
+        margin: 0.5rem auto;
+        padding: 0;
+    }
+
+    .header_container {
+        min-width: 100%;
+    }
+
+    .menu_btn {
+        display: block;
+    }
+
     .cart_div {
-        margin: 0 1rem;
+        margin: 0;
+        padding: 0.2rem 0 0;
+    }
+
+    .cart_div a {
+        position: relative;
+        right: 0;
+    }
+
+    .call_time_div, .phones_div {
+        display: none;
     }
 
     .horizontal_navbar nav a {
-        font-size: 1.1rem !important;
+        display: none;
+    }
+
+    .header_text_div {
+        position: relative;
+        top: -0.5rem;
     }
 }
