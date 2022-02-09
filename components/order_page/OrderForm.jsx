@@ -51,13 +51,13 @@ function OrderForm({onSubmit, cartData, setCartData}) {
             <form onSubmit={formik.handleSubmit}>
                 <div className={s.form_input_item} >
                 <label htmlFor="name">Ім&apos;я</label>
-                {myFormInput("name", "text", formik.values.name, formik.handleChange)}
+                {myFormInput("name", "text", cartData.name, (e)=>{handleChange(e); formik.handleChange(e)})}
                     {formik.errors.name ? <div>{formik.errors.name}</div> : null}
                 </div>
 
                 <div className={s.form_input_item} >
                 <label htmlFor="phone">Телефон</label>
-                {myFormInput("phone", "text", formik.values.phone, formik.handleChange)}
+                {myFormInput("phone", "text", cartData.phone, (e)=>{handleChange(e); formik.handleChange(e)})}
                     {formik.errors.phone ? <div>{formik.errors.phone}</div> : null}
                 </div>
 
@@ -67,8 +67,8 @@ function OrderForm({onSubmit, cartData, setCartData}) {
                         id={"message"}
                         name={"message"}
                         rows={5}
-                        onChange={formik.handleChange}
-                        value={formik.values.message}
+                        onChange={(e)=>{handleChange(e); formik.handleChange(e)}}
+                        value={cartData.message}
                         placeholder={"Місце доставки, запитання"}
                     />
                 </div>

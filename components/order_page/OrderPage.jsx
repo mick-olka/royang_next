@@ -27,7 +27,7 @@ function OrderPage({cartData, setCartData, deleteItemByIndex, createOrder, updat
             for (let i=0; i<cartData.cart.length; i++) {
                 deleteItemByIndex(cartData.cart[i].index);
             }
-            //router.push("/order_done");
+            router.push("/order_done");
         }
         else setAlert("Спочатку Оберіть Товар :)");
     }
