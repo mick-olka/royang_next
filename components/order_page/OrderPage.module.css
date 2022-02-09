@@ -16,25 +16,25 @@
 
 .cart_item {
     position: relative;
-    display: flex;
-    justify-content: left;
+    display: grid;
+    /*justify-content: left;*/
+    grid-template-columns: 1fr 3fr 2fr 1fr 1fr 1fr;
     /*background-color: rgba(100, 149, 237, 0.34);*/
     border: 1px solid grey;
     margin: 0.2rem 0.5rem;
-    padding-left: 0.5rem;
+    padding: 0.5rem;
     min-height: 5rem;
-    overflow: hidden;
+    /*overflow: hidden;*/
     align-items: center;
     box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.25);
 }
 
 .thumbnail {
-    max-height: 4rem;
     object-fit: contain;
 }
 
 .cart_item * {
-    margin-right: 2rem;
+    /*margin-right: 2rem;*/
     min-height: 100%;
 }
 
@@ -96,8 +96,8 @@
 .submit_btn {
     padding: 0.5rem;
     border-radius: 1rem;
-    width: 25rem;
-    margin: 1rem 0 5rem;
+    width: 80%;
+    margin: 1rem auto;
     font-size: 1.5rem;
     font-weight: bolder;
     font-family: 'Kanit', sans-serif;
@@ -123,4 +123,46 @@
 .order_done_div {
     font-size: 1.8rem;
     text-align: center;
+}
+
+@media screen and (max-width: 960px) {
+    .container {
+        margin: 0;
+        overflow-x: hidden;
+    }
+    .cart_box {
+        padding: 0.2rem;
+    }
+    .cart_item {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 0.5rem 0.5rem 0.5rem 4rem;
+        margin: 0.2rem 0;
+        font-size: 1.3rem;
+    }
+    .cart_item > span {
+        position: absolute !important;
+        top: 0;
+        left: 0.3rem;
+        width: 3rem !important;
+    }
+    .cart_item input {
+        font-size: 1.1rem;
+        width: 4rem;
+    }
+    .form_input_item {
+        display: block;
+    }
+    .delete_btn {
+       position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .form_box label {
+        display: block;
+    }
+    #comment textarea {
+        width: 50%;
+    }
 }

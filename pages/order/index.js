@@ -17,7 +17,7 @@ export default function OrderIndexPage ({orderPageProps, lists}) {
 
     useEffect(()=> {
         if (localStorage.cart) orderPageProps.setCartData({...cartData, cart: JSON.parse(localStorage.cart)});
-    }, [cartData, orderPageProps]);
+    }, []);
     const deleteItemByIndex0 =(index)=> {
         let cartCopy = [...cartData.cart];
         cartCopy.splice(index, 1);

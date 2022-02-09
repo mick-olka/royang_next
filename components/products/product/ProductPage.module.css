@@ -118,3 +118,15 @@
     font-weight: bolder;
     font-size: 1.2rem;
 }
+
+@media screen and (max-width: 960px) {
+    .main_box {
+        flex-direction: column;
+    }
+    .gallery {
+        width: 100%;
+    }
+    .container {
+        font-size: 1.3rem;
+    }
+}

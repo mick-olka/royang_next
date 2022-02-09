@@ -39,22 +39,24 @@ function OrderPage({cartData, deleteItemByIndex, createOrder, updateItemCount}) 
                 {cartData.cart.length<1 && <p>Корзина пуста</p>}
                 {cartData.cart.length>0 && cartData.cart.map((item, i)=>{
                     return <div key={item.code} className={s.cart_item} > {/*need more complex key*/}
-                        <Image className={s.thumbnail} src={item.photo} alt="prod_img"/>
+                        <Image className={s.thumbnail} width={80} height={40} src={item.photo} alt="prod_img" />
                         <p><Link href={"products/"+item.product} passHref ><a>{item.name}</a></Link></p>
                         <p>колір: {item.mainColor}/{item.pillColor}</p>
-                        <span>к-ть: </span><input type="number" onChange={
+                        <div>
+                        <b>к-ть: </b><input type="number" onChange={
                             (e) => {
                                 updateItemCount(i, e.target.value)
                             }}
                             min="1" value={item.count} />
+                        </div>
                         <p>вартість: {item.price*item.count}</p>
-                        <button className={s.delete_btn} onClick={()=>deleteItemByIndex(item.index)} > </button>
+                        <button className={s.delete_btn} onClick={() => {deleteItemByIndex(item.index)}} />
                     </div>
                 })}
 
             </div>
             <div style={{width: "fit-content", margin: "0 auto"}} >
-            <Link href="/" passHref ><a><p className={s.go_choose} >Додати Товар</p></a></Link>
+            <Link href="/" passHref ><a><p className={s.go_choose} >Продовжити покупки</p></a></Link>
             </div>
 
             <div className={s.form_box}>

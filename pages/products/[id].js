@@ -4,6 +4,7 @@ import ProductPage from "../../components/products/product/ProductPage";
 import Head from "next/head";
 
 export async function getStaticProps({ params }) {
+    console.log(params.id);
     const prodData = await getProduct(params.id);
     const lists = await getAllLists();
     return {

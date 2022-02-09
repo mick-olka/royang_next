@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from "./ProductPage.module.css";
 import ColorMenu from "./ColorMenu";
 import SectionsPane from "../../SectionsPane/SectionsPane";
@@ -18,6 +18,7 @@ function ProductPage({productData, addItemToCart}) {
     });
 
     let [chosenPhotos, setChosenPhotos] = useState([]);
+    let [descr, setDescr] = useState(null);
 
     let colors = productData.images.map(i => {
         return {_id: i._id, mainColor: i.mainColor, pillColor: i.pillColor}
@@ -60,7 +61,12 @@ function ProductPage({productData, addItemToCart}) {
         }
     }
 
-    return (<div>
+    useEffect(()=>{
+        setDescr( new DOMParser().parseFromString(productData.description, 'text/html') );
+    }, []);
+
+
+    return (<div className={s.container} >
 
             <div className={s.main_box}>
 
@@ -110,8 +116,10 @@ function ProductPage({productData, addItemToCart}) {
 
                 { productData.description && <div className={s.description_div} >
                     <h3 style={{fontSize: "1.2rem", fontWeight: "bolder"}} >Опис:</h3>
-                    <div className={s.description}>
-                        {productData.description.split("\n").map(p=>{return <p key={Math.random()*10} style={{margin: "1rem"}} >{p}</p>})}
+                    <div className={s.description} dangerouslySetInnerHTML={{ __html: productData.description }}>
+                        {/*{productData.description.split("\n").map((p, i)=>{return <p key={i} style={{margin: "1rem"}} >{p}</p>})}*/}
+                        {/*<br/>*/}
+                        {/*<div dangerouslySetInnerHTML={{ __html: productData.description }} />*/}
                     </div>
                 </div> }
 

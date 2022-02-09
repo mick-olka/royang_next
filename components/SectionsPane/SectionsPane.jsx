@@ -9,6 +9,7 @@ const SectionsPane=({products})=>{
         return <ProductCard
             key={p._id}
             _id={p._id}
+            url_name={p.url_name}
             name={p.name}
             thumbnail={p.thumbnail}
             price={p.price}

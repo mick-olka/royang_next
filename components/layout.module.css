@@ -10,8 +10,8 @@
 
 .content_pane {
     position: relative;
-    width: 60%;
-    margin: 0 auto;
+    /*width: 60%;*/
+    margin: 0 1rem 0 15rem;
 }
 
 .nav_pane {
@@ -88,6 +88,7 @@
     }
     .content_pane {
         width: 100%;
+        margin: 0;
     }
 
     .mobile_list {

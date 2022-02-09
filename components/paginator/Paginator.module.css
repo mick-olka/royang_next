@@ -1,9 +1,10 @@
 
 .container {
     display: flex;
-    width: 15rem;
+    width: 25rem;
     justify-content: space-around;
     margin: 0 auto;
+    font-size: 1.5rem;
 }
 
 .container div {

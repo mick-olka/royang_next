@@ -1,19 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from "./ProductCard.module.css";
 import Link from 'next/link';
 import Image from 'next/image';
 
-function ProductCard({name, thumbnail, price, oldPrice, _id, lessSpace}) {
+function ProductCard({name, thumbnail, price, oldPrice, _id, lessSpace, url_name}) {
 
+    const [imgError, setImgError] = useState(false);
     return (<div>
-        <Link href={"/products/"+_id} passHref >
+        <Link href={"/products/"+url_name} passHref >
             <a>
         <div className={s.section} style={lessSpace && {display: "block"}} >
             {oldPrice>0 && <div className={s.sale_icon_div} >
                     <Image src="/images/icons/coupon_color.png" width={50} height={50} alt="sale"/>
                 </div>}
                 <div className={s.imgPart} >
-                    <Image className={s.thumbnail} layout={"fill"} objectFit={"contain"} src={thumbnail? thumbnail : '/images/chair.png'} alt={"product"} />
+                    <Image className={s.thumbnail} layout={"fill"} objectFit={"contain"} src={imgError? '/images/chair.png' : thumbnail || '/images/chair.png'} alt={"product"} onError={()=>setImgError(true)} />
                 </div>
                 <div className={s.infoPart} >
                     <p>{name}</p>
