@@ -17,8 +17,10 @@ function ProductPage({productData, addItemToCart}) {
         price: productData.price,   //  for sum
     });
 
-    let [chosenPhotos, setChosenPhotos] = useState([]);
-    let [descr, setDescr] = useState(null);
+    const [chosenPhotos, setChosenPhotos] = useState([]);
+    const [descr, setDescr] = useState(null);
+    const [descrOpen, setDescrOpen] = useState(false);
+    const [featuresOpen, setFeaturesOpen] = useState(false);
 
     let colors = productData.images.map(i => {
         return {_id: i._id, mainColor: i.mainColor, pillColor: i.pillColor}
@@ -106,20 +108,18 @@ function ProductPage({productData, addItemToCart}) {
 
             <div className={s.extra_box}>
 
-                <div className={s.features_list}>
-                    <h2>Характеристики</h2>
+                <div className={s.features_div}>
+                    <h2 onClick={()=>setFeaturesOpen(!featuresOpen)} >Характеристики <span>{featuresOpen?"▲":"▼"}</span></h2>
+                    <div className={s.features_list} style={featuresOpen ? {height: "15rem"}:{height: "0"}} >
                     {productData.features && productData.features.map(f => {
                         return <p key={f.key}>{f.key} : <span>{f.value}</span></p>
                     })}
+                    </div>
                 </div>
-                <br/><br/>
 
                 { productData.description && <div className={s.description_div} >
-                    <h3 style={{fontSize: "1.2rem", fontWeight: "bolder"}} >Опис:</h3>
-                    <div className={s.description} dangerouslySetInnerHTML={{ __html: productData.description }}>
-                        {/*{productData.description.split("\n").map((p, i)=>{return <p key={i} style={{margin: "1rem"}} >{p}</p>})}*/}
-                        {/*<br/>*/}
-                        {/*<div dangerouslySetInnerHTML={{ __html: productData.description }} />*/}
+                    <h2 style={{fontSize: "1.2rem", fontWeight: "bolder"}} onClick={()=>setDescrOpen(!descrOpen)} >Опис <span>{descrOpen?"▲":"▼"}</span> </h2>
+                    <div className={s.description} style={descrOpen ? {height: "50rem"}:{height: "0"}} dangerouslySetInnerHTML={{ __html: productData.description }}>
                     </div>
                 </div> }
 
