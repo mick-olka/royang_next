@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-function OrderPage({cartData, deleteItemByIndex, createOrder, updateItemCount}) {
+function OrderPage({cartData, setCartData, deleteItemByIndex, createOrder, updateItemCount}) {
 
     const router = useRouter();
     const [alert, setAlert] =useState(null);  //  in case user haven't chosen product and pressed confirm
@@ -20,14 +20,14 @@ function OrderPage({cartData, deleteItemByIndex, createOrder, updateItemCount}) 
     }, [cartData]);
 
     const onSubmit = (values) => {
-        let orderData = {...values, sum: cartData.sum, cart: cartData.cart};
+        let orderData = {...values, sum: summ, cart: cartData.cart};
         if (orderData.cart.length>0) {
             setAlert(null);
             createOrder(orderData);
             for (let i=0; i<cartData.cart.length; i++) {
                 deleteItemByIndex(cartData.cart[i].index);
             }
-            router.push("/order_done");
+            //router.push("/order_done");
         }
         else setAlert("Спочатку Оберіть Товар :)");
     }
@@ -62,7 +62,7 @@ function OrderPage({cartData, deleteItemByIndex, createOrder, updateItemCount}) 
             <div className={s.form_box}>
             <div><p className={s.sum_p} >Всього: {summ} грн</p></div>
 
-            <OrderForm onSubmit={onSubmit} />
+            <OrderForm onSubmit={onSubmit} cartData={cartData} setCartData={setCartData} />
             <div className={s.alert} >{alert}</div>
 
             </div>

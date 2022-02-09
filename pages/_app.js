@@ -8,6 +8,9 @@ function MyApp({ Component, pageProps }) {
   const [color, setColor] = useState("blue");
   const [cartData, setCartData] = useState({
     cart: [],   //  for client
+    name: "",
+    phone: "",
+    message: "",
     sum: 0,
     orderData: {
       _id: null,
@@ -15,7 +18,14 @@ function MyApp({ Component, pageProps }) {
   });
 
   const addItemToCart = (data) => {
-    setCartData({...cartData, cart: [...cartData.cart, data]});
+    let sameProd = cartData.cart.map(i=>{return i.code}).indexOf(data.code);
+    if (sameProd === -1) {
+      setCartData({...cartData, cart: [...cartData.cart, data]});
+    } else {
+      let cartCopy = [...cartData.cart];
+      cartCopy[sameProd].count = +cartCopy[sameProd].count + +data.count;
+      setCartData({...cartData, cart: cartCopy});
+    }
     router.push('/order');
   }
 
@@ -25,20 +35,12 @@ function MyApp({ Component, pageProps }) {
     cartData: cartData
   }
 
-  const myProps = {color, setColor,
-    orderPageProps: {
-      addItemToCart: addItemToCart,
-      setCartData: setCartData,
-      cartData: cartData
-    }
-  };
-
   return <>
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
       <title>Rotang.ua</title>
     </Head>
-    <Component myProps={myProps} orderPageProps={orderPageProps} {...pageProps} />
+    <Component orderPageProps={orderPageProps} {...pageProps} />
   </>
 }
 

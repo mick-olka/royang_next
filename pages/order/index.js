@@ -25,9 +25,9 @@ export default function OrderIndexPage ({orderPageProps, lists}) {
         if (cartData.cart.length<2) localStorage.cart=JSON.stringify([]);    //  save cart items to localStorage on cart change
     }
 
-    const createOrder0 = (data) => {
+    const createOrder0 = (orderData) => {
         //  fetch order creation
-        fetchNewOrder(data);
+        fetchNewOrder(orderData);   //  {...formData, cart: cart}
     };
 
     const updateItemCount0 = (index, count) => {
@@ -41,6 +41,7 @@ export default function OrderIndexPage ({orderPageProps, lists}) {
         <MainLayout lists={lists} >
             <OrderPage
                 cartData={cartData}
+                setCartData={orderPageProps.setCartData}
                 createOrder={createOrder0}
                 deleteItemByIndex={deleteItemByIndex0}
                 updateItemCount={updateItemCount0}

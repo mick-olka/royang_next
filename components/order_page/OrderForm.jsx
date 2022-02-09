@@ -30,17 +30,21 @@ const validate = values => {
     return errors;
 };
 
-function OrderForm({onSubmit}) {
+function OrderForm({onSubmit, cartData, setCartData}) {
+    const handleChange = (e) => {
+        setCartData({...cartData, [e.target.name]: e.target.value});
+        //console.log({key: e.target.name, value: e.target.value});
+    }
     const formik = useFormik({
         initialValues: {
-            name: "",
-            phone: "",
-            message: "",
+            name: cartData.name,
+            phone: cartData.phone,
+            message: cartData.message,
         },
         validate,
         onSubmit: values => {
             onSubmit(values);
-        },
+        }
     });
     return (
         <div>
@@ -67,7 +71,6 @@ function OrderForm({onSubmit}) {
                         value={formik.values.message}
                         placeholder={"Місце доставки, запитання"}
                     />
-                {/*{myFormInput("message", "textarea", formik.values.message, formik.handleChange)}*/}
                 </div>
                 {formik.errors.message ? <div>{formik.errors.message}</div> : null}
 
