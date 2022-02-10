@@ -50,3 +50,17 @@
 .colors_div strong {
     font-weight: bolder;
 }
+
+@media screen and (max-width: 960px) {
+    .info_page {
+        width: 103%;
+    }
+    .article_part {
+        font-size: 1.3rem;
+        text-indent: 2rem !important;
+    }
+    .article_header {
+        margin: 1rem 0;
+        font-size: 2rem;
+    }
+}

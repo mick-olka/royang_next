@@ -38,12 +38,10 @@
 
 .name_div{
     grid-area: l;
-    right: 0;
     color: var(--c_black_purple);
     font-weight: bolder;
     font-size: 3rem;
     padding: 0.5rem;
-    justify-content: space-around;
     margin: 0 2rem;
     font-family: 'Kanit', sans-serif;
     text-shadow: 1px 1px black;
@@ -120,10 +118,14 @@
         grid-template: "b b l l l l l l l l l l l c c" "t t t t t t t t t t t t t t t";
     }
 
+    .name_div a {
+        display: inline-block;
+        max-height: 1rem;
+    }
+
     .name_div {
-        align-items: center;
         font-size: 2rem;
-        margin: 0.5rem auto;
+        margin: 0.5rem auto 0 !important;
         padding: 0;
     }
 
@@ -155,6 +157,6 @@
 
     .header_text_div {
         position: relative;
-        top: -0.5rem;
+        top: -0.3rem;
     }
 }

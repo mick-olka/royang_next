@@ -1,7 +1,7 @@
 
 .container {
     display: flex;
-    width: 25rem;
+    max-width: 20rem;
     justify-content: space-around;
     margin: 0 auto;
     font-size: 1.5rem;

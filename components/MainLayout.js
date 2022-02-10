@@ -20,6 +20,9 @@ export default function MainLayout({ children, lists }) {
         {url: '/info#rotang', name: "Про Ротанг"},
         {url: '/info#payment', name: "Оплата"},
     ];
+    const types_list = lists.map(l=>{
+        return {...l, url: "/"+l.url};
+    });
 
     return (
         <div className={styles.container}>
@@ -45,7 +48,7 @@ export default function MainLayout({ children, lists }) {
             <main className={styles.main_block} >
                 <div className={styles.nav_pane} id="menu_pane" >
                     <Search />
-                <Navbar links={lists || []} />
+                <Navbar links={types_list || []} />
                     <div className={styles.mobile_list} >
                         <br/>
                         <Navbar links={header_links} />
@@ -68,7 +71,7 @@ export default function MainLayout({ children, lists }) {
             </main>
 
             <footer className={styles.footer}>
-                <pre>Rotang.ua          |         <a style={{display: "inline"}} href={'http://178.54.240.228:7878'} rel="noopener noreferrer" target="_blank" >admin</a>           |           2022</pre>
+                <pre>Rotang.ua          |         <a style={{display: "inline"}} href={'http://192.168.1.164:3000'} rel="noopener noreferrer" target="_blank" >admin</a>           |           2022</pre>
             </footer>
         </div>
     )

@@ -1,9 +1,10 @@
 import React from 'react';
+import s from "./InfoPage.module.css";
 
 function Contacts(props) {
     return (
         <div>
-            <h2 style={{fontSize: "3rem", margin: "1rem 5rem", fontWeight: "bolder"}} > Контакти: </h2>
+            <h2 className={s.article_header} > Контакти: </h2>
 
             <p style={{fontWeight: "bolder", margin: "1.5rem 0 0.5rem"}} >1. Київська область:</p>
 

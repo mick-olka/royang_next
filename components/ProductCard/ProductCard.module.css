@@ -4,13 +4,12 @@
     height: 9rem;
     display: flex;
     margin: 0.8rem auto;
-    justify-content: center;
     position: relative;
 }
 
 .imgPart {
     position: relative;
-    flex: 60%;
+    flex: 50%;
     height: 100%;
     margin-bottom: 0.2rem;
 }

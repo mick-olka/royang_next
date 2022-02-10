@@ -12,7 +12,7 @@ const Navbar = ({links}) => {
         // otherwise site may take a hit on SEO.
         return (
                 <div className={s.linkDiv} key={l.url}>
-                    <Link href={"/"+l.url}><a className={router.pathname === l.url ? s.activeLink : ""} >{l.name}</a></Link>
+                    <Link href={l.url}><a className={router.pathname === l.url ? s.activeLink : ""} >{l.name}</a></Link>
                 </div>
             )
         }

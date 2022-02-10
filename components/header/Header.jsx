@@ -20,7 +20,7 @@ const Header = ({links}) => {
 
     let header_style = {
         transition: "all 300ms ease-in",
-        boxShadow: headerBorder ? "2px 2px 3px 0 rgba(0,0,0,0.55)" : "none"
+        boxShadow: headerBorder ? "2px 2px 3px 0 rgba(0,0,0,0.55)" : "none",
     }
 
     const [navShow, setNavShow] = useState(false);

@@ -16,9 +16,9 @@
 
 .nav_pane {
     position: fixed;
-    width: available;
     padding-left: 1rem;
     z-index: 500;
+    top: 8rem;
     transition: left 0.5s;
 }
 
@@ -74,7 +74,7 @@
 
 @media screen and (max-width: 960px) {
     .container {
-        margin: 5rem 1rem 0;
+        margin: 5rem 0 0;
     }
     .nav_pane {
         top: 4rem;
@@ -86,8 +86,8 @@
         overflow-y: auto;
     }
     .content_pane {
-        width: 100%;
-        margin: 0;
+        width: 96%;
+        margin: 0 0.5rem;
     }
 
     .mobile_list {
