@@ -1,9 +1,9 @@
 import {findProducts, getAllLists} from "../../lib/fetch_data";
 import ProductsListPane from "../../components/products/ProductsListPane";
 
-export async function getServerSideProps({query}) {
-    const prodData = await findProducts(1, 999, query.search);
-    const lists = await getAllLists();
+export async function getServerSideProps({query, locale}) {
+    const prodData = await findProducts(1, 999, query.search, locale);
+    const lists = await getAllLists(locale);
     return {
         props: {
             prodData: prodData,

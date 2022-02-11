@@ -2,8 +2,8 @@ import {getAllLists, getAllListUrls, getListProducts} from "../lib/fetch_data";
 import ProductsListPane from "../components/products/ProductsListPane";
 
 export async function getStaticProps({ params, locale }) {
-    const prodData = await getListProducts(params.listUrl);
-    const lists = await getAllLists();
+    const prodData = await getListProducts(params.listUrl, locale);
+    const lists = await getAllLists(locale);
     return {
         props: {
             prodData,
@@ -17,7 +17,7 @@ export async function getStaticPaths() {
     const paths = await getAllListUrls();
     let pathsWithLocale = [];
     paths.forEach( p=> {
-        pathsWithLocale.push({...p, locale: "uk-UA"}, {...p, locale: "ru-RU"});
+        pathsWithLocale.push({...p, locale: "ua"}, {...p, locale: "ru"});
     });
     return {
         paths: pathsWithLocale,

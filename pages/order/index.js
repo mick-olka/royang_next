@@ -3,8 +3,8 @@ import MainLayout from "../../components/MainLayout";
 import {fetchNewOrder, getAllLists} from "../../lib/fetch_data";
 import {useEffect} from "react";
 
-export async function getStaticProps({ params }) {
-    const lists = await getAllLists();
+export async function getStaticProps({ params, locale }) {
+    const lists = await getAllLists(locale);
     return {
         props: {
             lists

@@ -5,9 +5,9 @@ import MainLayout from "../../components/MainLayout";
 import {getAllLists, getGallery} from "../../lib/fetch_data";
 import s from "../../components/info_page/InfoPage.module.css";
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params, locale }) {
     const gallery = await getGallery();
-    const lists = await getAllLists();
+    const lists = await getAllLists(locale);
     return {
         props: {
             gallery,

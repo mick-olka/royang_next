@@ -2,8 +2,8 @@
 import OrderDone from "../../components/order_page/OrderDone";
 import {getAllLists} from "../../lib/fetch_data";
 import MainLayout from "../../components/MainLayout";
-export async function getServerSideProps() {
-    const lists = await getAllLists();
+export async function getServerSideProps({locale}) {
+    const lists = await getAllLists(locale);
     return {
         props: {
             lists: lists

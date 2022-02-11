@@ -2,11 +2,11 @@ import {getAllLists, getProductsList} from "../lib/fetch_data";
 import ProductsListPane from "../components/products/ProductsListPane";
 import {useRouter} from "next/router";
 
-export async function getServerSideProps({query}) {
+export async function getServerSideProps({query, locale}) {
     let page = 1, limit = 50;
     if (query.page && query.page>0) page = query.page;
-    const prodData = await getProductsList(page, limit);
-    const lists = await getAllLists();
+    const prodData = await getProductsList(page, limit, locale);
+    const lists = await getAllLists(locale);
     return {
         props: {
             prodData,

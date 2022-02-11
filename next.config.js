@@ -4,7 +4,7 @@ module.exports = {
     domains: ['192.168.1.164', '178.54.240.228', 'static-sl.insales.ru'],
   },
   i18n: {
-    locales: ["uk-UA", "ru-RU"],
-    defaultLocale: "uk-UA"
+    locales: ["ua", "ru"],
+    defaultLocale: "ua"
   },
 }
