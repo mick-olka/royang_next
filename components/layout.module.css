@@ -72,6 +72,14 @@
     font-weight: bolder;
 }
 
+.locales_div {
+    display: flex;
+}
+
+.active_locale {
+    background-color: #6c6c6c;
+}
+
 @media screen and (max-width: 960px) {
     .container {
         margin: 5rem 0 0;

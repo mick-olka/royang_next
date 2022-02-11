@@ -1,5 +1,6 @@
 import {getAllLists, getProductsList} from "../lib/fetch_data";
 import ProductsListPane from "../components/products/ProductsListPane";
+import {useRouter} from "next/router";
 
 export async function getServerSideProps({query}) {
     let page = 1, limit = 50;
@@ -21,7 +22,7 @@ export async function getServerSideProps({query}) {
 }
 
 export default function Products ({prodData, myProps, paginator, lists}) {
-
+    const {locale, locales, asPath} = useRouter();
     return (<>
             <div className={"main_page_text"} >
                 <p>Великий вибір меблів із натурального та штучного ротангу для дому, террас та літніх майданчиків ресторанів.</p>

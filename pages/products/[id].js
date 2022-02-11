@@ -3,7 +3,7 @@ import {getAllLists, getAllProductsIds, getProduct} from "../../lib/fetch_data";
 import ProductPage from "../../components/products/product/ProductPage";
 import Head from "next/head";
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params, locale }) {
     console.log(params.id);
     const prodData = await getProduct(params.id);
     const lists = await getAllLists();
@@ -18,9 +18,13 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
     const paths = await getAllProductsIds();
+    let pathsWithLocale = [];
+    paths.forEach( p=> {
+        pathsWithLocale.push({...p, locale: "uk-UA"}, {...p, locale: "ru-RU"});
+    });
     return {
-        paths,
-        fallback: false
+        paths: pathsWithLocale,
+        fallback: true
     }
 }
 

@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import styles from './layout.module.css'
 import Navbar from "./navbar/Navbar";
 import Header from "./header/Header";
@@ -6,6 +7,7 @@ import Search from "./search/Search";
 import s from "./header/Header.module.css";
 import React from "react";
 import global_data from "../utils/global_data";
+import {useRouter} from "next/router";
 
 export const siteTitle = 'Rotang.ua';
 
@@ -23,7 +25,7 @@ export default function MainLayout({ children, lists }) {
     const types_list = lists.map(l=>{
         return {...l, url: "/"+l.url};
     });
-
+    const {locale, locales, asPath} = useRouter();
     return (
         <div className={styles.container}>
             <Head>
@@ -47,6 +49,13 @@ export default function MainLayout({ children, lists }) {
 
             <main className={styles.main_block} >
                 <div className={styles.nav_pane} id="menu_pane" >
+                    <div className={styles.locales_div}>
+                        {locales.map((l, i)=> {
+                            return <div key={i} className={l===locale ? styles.active_locale : ""} >
+                                <Link href={asPath} locale={l} >{l}</Link>
+                            </div>
+                        })}
+                    </div>
                     <Search />
                 <Navbar links={types_list || []} />
                     <div className={styles.mobile_list} >
