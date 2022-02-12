@@ -51,7 +51,7 @@ export default function MainLayout({ children, lists }) {
                 <div className={styles.nav_pane} id="menu_pane" >
                     <div className={styles.locales_div}>
                         {locales.map((l, i)=> {
-                            return <div key={i} className={l===locale ? styles.active_locale : ""} >
+                            return <div key={i} className={l===locale ? styles.active_locale : styles.locale} >
                                 <Link href={asPath} locale={l} >{l}</Link>
                             </div>
                         })}
@@ -65,11 +65,11 @@ export default function MainLayout({ children, lists }) {
                         <h3 style={{fontSize: "1.3rem", fontWeight: "bolder"}} >Контакти</h3>
                         <div className={styles.menu_contacts} >
                             <ul>
-                                <li className={s.phone_li}><a href={"tel:" + global_data.phones[0]}>📞 {global_data.phones[0]}</a>
+                                <li className={s.phone_li}><a href={"tel:" + global_data.phones[0]}>{global_data.phones[0]}</a>
                                 </li>
-                                <li className={s.phone_li}><a href={"tel:" + global_data.phones[1]}>📞 {global_data.phones[1]}</a>
+                                <li className={s.phone_li}><a href={"tel:" + global_data.phones[1]}>{global_data.phones[1]}</a>
                                 </li>
-                                <li className={s.phone_li}><a href={"tel:" + global_data.phones[2]}>📞 {global_data.phones[2]}</a>
+                                <li className={s.phone_li}><a href={"tel:" + global_data.phones[2]}>{global_data.phones[2]}</a>
                                 </li>
                             </ul>
                             <p>з 9:00 по 20:00</p>
