@@ -13,11 +13,10 @@ export async function getServerSideProps({query, locale}) {
             paginator: {
                 page: page,
                 limit: limit,
-                count: prodData.count
+                count: prodData.count,
             },
             lists: lists
-        },
-        // revalidate: 5,
+        }
     }
 }
 

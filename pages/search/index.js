@@ -2,13 +2,20 @@ import {findProducts, getAllLists} from "../../lib/fetch_data";
 import ProductsListPane from "../../components/products/ProductsListPane";
 
 export async function getServerSideProps({query, locale}) {
+    let page = 1, limit = 50;
+    if (query.page && query.page>0) page = query.page;
     const prodData = await findProducts(1, 999, query.search, locale);
     const lists = await getAllLists(locale);
     return {
         props: {
             prodData: prodData,
             pattern: query.search,
-            lists
+            lists,
+            paginator: {
+                page: page,
+                limit: limit,
+                count: prodData.count,
+            }
         }
     }
 }

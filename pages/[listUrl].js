@@ -1,13 +1,20 @@
 import {getAllLists, getAllListUrls, getListProducts} from "../lib/fetch_data";
 import ProductsListPane from "../components/products/ProductsListPane";
 
-export async function getStaticProps({ params, locale }) {
+export async function getStaticProps({ query, params, locale }) {
+    let page = 1, limit = 50;
+    if (query.page && query.page>0) page = query.page;
     const prodData = await getListProducts(params.listUrl, locale);
     const lists = await getAllLists(locale);
     return {
         props: {
             prodData,
             lists
+        },
+        paginator: {
+            page: page,
+            limit: limit,
+            count: prodData.count,
         },
         revalidate: 5,
     }

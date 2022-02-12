@@ -7,9 +7,10 @@ import Paginator from "../paginator/Paginator";
 export default function ProductsListPane ({prodList, paginatorData, headerText, lists}) {
     const [products, setProducts] = useState([])
     const router = useRouter();
-    const [loading, setLoading] = useState(false)
-    const startLoading = () => setLoading(true)
-    const stopLoading = () => setLoading(false)
+    const [portionNum, setPortionNum] = useState(1);
+    const [loading, setLoading] = useState(false);
+    const startLoading = () => setLoading(true);
+    const stopLoading = () => setLoading(false);
 
     useEffect(() => {
         // Router event handler
@@ -47,7 +48,12 @@ export default function ProductsListPane ({prodList, paginatorData, headerText, 
                     <div>
                         <SectionsPane products={products} />
                     </div>
-                    <Paginator handlePagination={handlePagination} paginatorData={paginatorData} />
+                    <Paginator
+                        setPortionNum={setPortionNum}
+                        onPageChanged={handlePagination}
+                        // handlePagination={handlePagination}
+                        paginatorData={{...paginatorData, portion: 4, portionNum: portionNum}}
+                    />
                 </div>
             }
         </MainLayout>

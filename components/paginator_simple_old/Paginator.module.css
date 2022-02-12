@@ -1,0 +1,17 @@
+
+.container {
+    display: flex;
+    max-width: 20rem;
+    justify-content: space-around;
+    margin: 0 auto;
+    font-size: 1.5rem;
+}
+
+.container div {
+
+}
+
+.active {
+    font-weight: bolder;
+    border: 1px solid rgba(102, 102, 102, 0.24);
+}
