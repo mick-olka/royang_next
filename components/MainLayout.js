@@ -56,7 +56,7 @@ export default function MainLayout({ children, lists }) {
                             </div>
                         })}
                     </div>
-                    <Search />
+                    <Search locale={locale} />
                 <Navbar links={types_list || []} />
                     <div className={styles.mobile_list} >
                         <br/>

@@ -5,11 +5,11 @@ import s from "./Search.module.css";
 import Image from "next/image";
 import {useRouter} from "next/router";
 
-const Search = () => {
+const Search = ({locale}) => {
 
     const router = useRouter();
     const onSubmit = (string) => {
-        if (string.length>0) router.push("search/?search="+string);
+        if (string.length>0) router.push(`search/?search=${string}&locale=${locale}`);
     }
 
     return (
