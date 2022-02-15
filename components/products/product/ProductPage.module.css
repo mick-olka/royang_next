@@ -129,9 +129,9 @@
 }
 
 .description, .features_list {
+    height: auto;
     overflow: hidden;
-    transition: height 0.5s;
-    max-height: fit-content;
+    transition: max-height 0.5s;
     margin: 1rem;
 }
 

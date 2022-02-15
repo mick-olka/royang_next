@@ -2,25 +2,25 @@ import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 import Image from 'next/image';
 import MainLayout from "../../components/MainLayout";
-import {getAllLists, getGallery} from "../../lib/fetch_data";
+import { getGallery, getLayoutData} from "../../lib/fetch_data";
 import s from "../../components/info_page/InfoPage.module.css";
 
 export async function getStaticProps({ params, locale }) {
     const gallery = await getGallery();
-    const lists = await getAllLists(locale);
+    const layoutData = await getLayoutData(locale);
     return {
         props: {
             gallery,
-            lists
+            layoutData
         },
         // revalidate: 5,
     }
 }
 
-export default function GalleryIndex({gallery, lists}) {
+export default function GalleryIndex({gallery, layoutData}) {
 
   return (
-      <MainLayout lists={lists} main>
+      <MainLayout layoutData={layoutData} main>
       <Head>
         <title>Gallery</title>
       </Head>

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import s from "./ColorMenu.module.css"
 
-function ColorMenu({colors, setColors, reset}) {  //  colors = { name: Str, src: Url }
+function ColorMenu({colors, setColors, reset, locale}) {  //  colors = { name: Str, src: Url }
 
     let [isHidden, setIsHidden] = useState(true);
     const toggleMenu = () => {
@@ -32,15 +32,15 @@ function ColorMenu({colors, setColors, reset}) {  //  colors = { name: Str, src:
 
     return (<div className={s.container}  >
             <button onClick={toggleMenu} className={s.open_btn} >{isHidden? "Обрати колір" : "Закрити"}</button>
-            <button onClick={onReset} className={s.open_btn} >{ "Скинути колір" }</button>
+            <button onClick={onReset} className={s.open_btn} >{ "Всі фото" }</button>
         <div className={s.menu_box}
              style={isHidden ?
                  {display: "none"} :
                  {display: "block"}}
         >
 
-            <button className={s.reset_btn} onClick={onReset} >скинути</button>
-            <button className={s.x_btn} onClick={toggleMenu} > </button>
+            {/*<button className={s.reset_btn} onClick={onReset} >скинути</button>*/}
+            {/*<button className={s.x_btn} onClick={toggleMenu} > </button>*/}
 
             {items}
 

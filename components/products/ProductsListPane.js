@@ -4,7 +4,7 @@ import Router, { useRouter } from "next/router";
 import SectionsPane from "../SectionsPane/SectionsPane";
 import Paginator from "../paginator/Paginator";
 
-export default function ProductsListPane ({prodList, paginatorData, headerText, lists}) {
+export default function ProductsListPane ({prodList, paginatorData, headerText}) {
     const [products, setProducts] = useState([])
     const router = useRouter();
     const [portionNum, setPortionNum] = useState(1);
@@ -41,7 +41,7 @@ export default function ProductsListPane ({prodList, paginatorData, headerText, 
     }
 
     return (
-        <MainLayout lists={lists} >
+        <div>
             {loading ? <h2>Loader...</h2> :
                 <div>
                     <h2 style={{margin: "1rem 0",textAlign: "center", fontSize: "1.5rem"}} >{headerText && headerText}</h2>
@@ -56,6 +56,6 @@ export default function ProductsListPane ({prodList, paginatorData, headerText, 
                     />
                 </div>
             }
-        </MainLayout>
+        </div>
     );
 }

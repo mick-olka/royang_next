@@ -4,7 +4,7 @@ import ColorMenu from "./ColorMenu";
 import SectionsPane from "../../SectionsPane/SectionsPane";
 import Slider from "../../slider/Slider";
 
-function ProductPage({productData, addItemToCart}) {
+function ProductPage({productData, addItemToCart, locale}) {
 
     let [itemForCart, setItemForCart] = useState({
         product: productData._id,
@@ -20,6 +20,8 @@ function ProductPage({productData, addItemToCart}) {
     const [chosenPhotos, setChosenPhotos] = useState([]);
     const [descr, setDescr] = useState(null);
     const [descrOpen, setDescrOpen] = useState(false);
+    const [similarOpen, setSimilarOpen] = useState(false);
+    const [relatedOpen, setRelatedOpen] = useState(false);
     const [featuresOpen, setFeaturesOpen] = useState(false);
 
     let colors = productData.images.map(i => {
@@ -87,14 +89,14 @@ function ProductPage({productData, addItemToCart}) {
                     </div>
 
                     <div className={s.colors_div}>
-                        <ColorMenu colors={colors} setColors={setColorsAndPhotos} reset={resetColorsAndPhotos}/>
+                        <ColorMenu colors={colors} setColors={setColorsAndPhotos} reset={resetColorsAndPhotos} locale={locale} />
                     </div>
 
                     <div className={s.orderInfo} >
                         <span>Кількість</span>
                         <input className={s.count_input} type="number" min="1" value={itemForCart.count} onChange={e => setCount(e.target.value)}/>
-                        <p><span>Колір каркасу: </span>{itemForCart.mainColor || "не вибрано"}</p>
-                        <p><span>Колір тканини: </span>{itemForCart.pillColor || "не вибрано"}</p>
+                        <p><span>Колір каркасу: </span>{itemForCart.mainColor[locale] || "не вибрано"}</p>
+                        <p><span>Колір тканини: </span>{itemForCart.pillColor[locale] || "не вибрано"}</p>
                     </div>
 
                     {/*<button onClick={onClickAddItemToCart} className={s.toCart_btn} >Додати в кошик</button>*/}
@@ -110,7 +112,7 @@ function ProductPage({productData, addItemToCart}) {
 
                 <div className={s.features_div}>
                     <h2 onClick={()=>setFeaturesOpen(!featuresOpen)} >Характеристики <span>{featuresOpen?"▲":"▼"}</span></h2>
-                    <div className={s.features_list} style={featuresOpen ? {height: "15rem"}:{height: "0"}} >
+                    <div className={s.features_list} style={featuresOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} >
                     {productData.features && productData.features.map(f => {
                         return <p key={f.key}>{f.key} : <span>{f.value}</span></p>
                     })}
@@ -119,21 +121,25 @@ function ProductPage({productData, addItemToCart}) {
 
                 { productData.description && <div className={s.description_div} >
                     <h2 style={{fontSize: "1.2rem", fontWeight: "bolder"}} onClick={()=>setDescrOpen(!descrOpen)} >Опис <span>{descrOpen?"▲":"▼"}</span> </h2>
-                    <div className={s.description} style={descrOpen ? {height: "50rem"}:{height: "0"}} dangerouslySetInnerHTML={{ __html: productData.description }}>
+                    <div className={s.description} style={descrOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} dangerouslySetInnerHTML={{ __html: productData.description }}>
                     </div>
                 </div> }
 
                 {productData.relatedProducts.length>0 &&
                 <div className={s.related_products_div}>
-                    <h2>Пов&apos;язані товари</h2>
-                    <SectionsPane products={productData.relatedProducts}/>
+                    <h2 onClick={()=>setRelatedOpen(!relatedOpen)} >Пов&apos;язані товари <span>{relatedOpen?"▲":"▼"}</span></h2>
+                    <div className={s.features_list} style={relatedOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} >
+                        <SectionsPane products={productData.relatedProducts}/>
+                    </div>
                 </div>
                 }
 
                 {productData.similarProducts.length>0 &&
                 <div className={s.similar_products_div}>
-                    <h2>Схожі товари</h2>
+                    <h2 onClick={()=>setSimilarOpen(!similarOpen)} >Схожі товари <span>{similarOpen?"▲":"▼"}</span></h2>
+                    <div className={s.features_list} style={similarOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} >
                     <SectionsPane products={productData.similarProducts}/>
+                    </div>
                 </div>
                 }
 

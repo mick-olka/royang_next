@@ -14,7 +14,7 @@ const Search = ({locale}) => {
 
     return (
         <div>
-            <SearchForm onSubmit={onSubmit} />
+            <SearchForm onSubmit={onSubmit} locale={locale} />
         </div>
     );
 };
@@ -22,7 +22,7 @@ const Search = ({locale}) => {
 export default Search;
 
 
-let SearchForm = ({onSubmit}) => {
+let SearchForm = ({onSubmit, locale}) => {
 
     const formik = useFormik({
         initialValues: {
@@ -40,7 +40,7 @@ let SearchForm = ({onSubmit}) => {
                 onChange={formik.handleChange}
                 value={formik.values.search_input}
                 className={s.search_input}
-                placeholder="Пошук"
+                placeholder={locale==="ua" ? "Пошук" : "Поиск"}
             />
             <button type="submit" className={s.search_btn} >
                 <Image className={s.search_icon} width={25} height={25} src={"/images/icons/search.png"} alt="search"/>

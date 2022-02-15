@@ -11,21 +11,22 @@ import {useRouter} from "next/router";
 
 export const siteTitle = 'Rotang.ua';
 
-export default function MainLayout({ children, lists }) {
+export default function MainLayout({ children, layoutData }) {
+
+    const {locale, locales, asPath} = useRouter();
     const header_links = [
-        {url: '/gallery', name: "Галерея Фото"},
-        {url: '/colors', name: "Вибір Кольору"},
-        {url: '/info#delivery', name: "Про Доставку"},
-        {url: '/info#contacts', name: "Контакти"},
-        {url: '/info#discounts', name: "Знижки"},
-        {url: '/info#plastic_rotang', name: "Про Полі-Ротанг"},
-        {url: '/info#rotang', name: "Про Ротанг"},
-        {url: '/info#payment', name: "Оплата"},
+        {url: '/gallery', name: locale==="ua" ? "Галерея Фото":"Галерея Фото"},
+        {url: '/colors', name: locale==="ua" ? "Вибір Кольору" : "Выбор цвета"},
+        {url: '/info#delivery', name: locale==="ua" ? "Про Доставку" : "Про доставку"},
+        {url: '/info#contacts', name: locale==="ua" ? "Контакти" : "Контакты"},
+        {url: '/info#discounts', name: locale==="ua" ? "Знижки" : "Скидки"},
+        {url: '/info#plastic_rotang', name: locale==="ua" ? "Про Полі-Ротанг" : "Про Поли-ротанг"},
+        {url: '/info#rotang', name: locale==="ua" ? "Про Ротанг" : "Про Ротанг"},
+        {url: '/info#payment', name: locale==="ua" ? "Оплата" : "Оплата"},
     ];
-    const types_list = lists.map(l=>{
+    const types_list = layoutData.lists.map(l=>{
         return {...l, url: "/"+l.url};
     });
-    const {locale, locales, asPath} = useRouter();
     return (
         <div className={styles.container}>
             <Head>
@@ -45,7 +46,7 @@ export default function MainLayout({ children, lists }) {
                 <title>Rotang.ua</title>
             </Head>
 
-            <Header links={header_links} />
+            <Header links={header_links} headerText={layoutData.headerText.text} />
 
             <main className={styles.main_block} >
                 <div className={styles.nav_pane} id="menu_pane" >
@@ -72,7 +73,7 @@ export default function MainLayout({ children, lists }) {
                                 <li className={s.phone_li}><a href={"tel:" + global_data.phones[2]}>{global_data.phones[2]}</a>
                                 </li>
                             </ul>
-                            <p>з 9:00 по 20:00</p>
+                            <p>9:00 - 20:00</p>
                         </div>
                     </div>
                 </div>

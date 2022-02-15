@@ -9,12 +9,12 @@
     left: 0;
     display: block;
     z-index: 10;
-    width: 12rem;
+    width: 15rem;
     background-color: #f3f2f2;
     border: 1px solid grey;
     box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.55);
     border-radius: 0.5rem;
-    padding: 0.5rem;
+    padding: 0.1rem;
 }
 
 .hidden {
@@ -24,7 +24,7 @@
 .item {
     margin: 0.4rem 0.1rem;
     padding: 0.5rem;
-    background-color: var(--c_bright_orange);
+    background-color: #fff;
     border: 1px solid grey;
     border-radius: 0.3rem;
     overflow: hidden;
@@ -55,10 +55,10 @@
     border: 1px solid grey;
     border-radius: 0.4rem;
     display: block;
-    margin: 0 0.1rem;
+    margin: 0 0.3rem 0 0;
     height: 1.5rem;
     width: 85%;
-    background-color: var(--c_grey);
+    background-color: #d0d0d0;
     box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.25);
 }
 

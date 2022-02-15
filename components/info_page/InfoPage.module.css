@@ -10,6 +10,18 @@
     line-height: 2.5rem;
 }
 
+.article p {
+    text-indent: 3rem;
+}
+
+.article b {
+    font-weight: bolder;
+}
+
+.article h3 {
+    font-size: larger;
+}
+
 .article_header {
     font-weight: bolder;
     font-size: 3rem;

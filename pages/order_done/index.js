@@ -1,16 +1,16 @@
 
 import OrderDone from "../../components/order_page/OrderDone";
-import {getAllLists} from "../../lib/fetch_data";
+import {getLayoutData} from "../../lib/fetch_data";
 import MainLayout from "../../components/MainLayout";
 export async function getServerSideProps({locale}) {
-    const lists = await getAllLists(locale);
+    const layoutData = await getLayoutData(locale);
     return {
         props: {
-            lists: lists
+            layoutData
         },
         // revalidate: 5,
     }
 }
-export default function SearchResults({lists}) {
-    return <MainLayout lists={lists} > <OrderDone /> </MainLayout>;
+export default function SearchResults({layoutData}) {
+    return <MainLayout layoutData={layoutData} > <OrderDone /> </MainLayout>;
 }

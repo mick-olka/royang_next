@@ -1,12 +1,14 @@
-import {getAllLists, getProductsList} from "../lib/fetch_data";
+import {getLayoutData, getProductsList, getText} from "../lib/fetch_data";
 import ProductsListPane from "../components/products/ProductsListPane";
 import {useRouter} from "next/router";
+import MainLayout from "../components/MainLayout";
 
 export async function getServerSideProps({query, locale}) {
     let page = 1, limit = 50;
     if (query.page && query.page>0) page = query.page;
     const prodData = await getProductsList(page, limit, locale);
-    const lists = await getAllLists(locale);
+    const layoutData = await getLayoutData(locale);
+    const main_text = await Promise.all([getText("main_page_text", locale), getText("main_page_lower_text", locale)]);
     return {
         props: {
             prodData,
@@ -15,20 +17,21 @@ export async function getServerSideProps({query, locale}) {
                 limit: limit,
                 count: prodData.count,
             },
-            lists: lists
+            layoutData: layoutData,
+            main_page_text: main_text[0].text,
+            main_page_lower_text: main_text[1].text
         }
     }
 }
 
-export default function Products ({prodData, myProps, paginator, lists}) {
+export default function Products ({prodData, myProps, paginator, layoutData, main_page_text, main_page_lower_text}) {
     const {locale, locales, asPath} = useRouter();
-    return (<>
+    return (<MainLayout layoutData={layoutData} >
             <div className={"main_page_text"} >
-                <p>Великий вибір меблів із натурального та штучного ротангу для дому, террас та літніх майданчиків ресторанів.</p>
-                <p>Виробництво меблів під замовлення.</p>
-                <p>Вологостійкі меблі для басейнів, саун и банних комплексів.</p>
+                <p>{main_page_text}</p>
+                <p>{main_page_lower_text}</p>
             </div>
-        <ProductsListPane myProps={myProps} prodList={prodData.products} paginatorData={paginator} lists={lists} />
-        </>
+        <ProductsListPane myProps={myProps} prodList={prodData.products} paginatorData={paginator} />
+        </MainLayout>
     );
 }

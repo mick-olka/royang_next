@@ -3,9 +3,10 @@ import s from "./ProductCard.module.css";
 import Link from 'next/link';
 import Image from 'next/image';
 import {patchProduct} from "../../lib/fetch_data";
+import {useRouter} from "next/router";
 
 function ProductCard({name, thumbnail, price, oldPrice, _id, lessSpace, url_name}) {
-
+    const {locale} = useRouter();
     const [imgError, setImgError] = useState(false);
     const onImgError = () => {
         setImgError(true);
@@ -22,7 +23,7 @@ function ProductCard({name, thumbnail, price, oldPrice, _id, lessSpace, url_name
                     <Image className={s.thumbnail} layout={"fill"} objectFit={"contain"} src={imgError? '/images/chair.png' : thumbnail || '/images/chair.png'} alt={"product"} onError={()=>onImgError()} />
                 </div>
                 <div className={s.infoPart} >
-                    <p>{name}</p>
+                    <p>{name[locale] || name}</p>
                     {oldPrice>0 && <p style={{fontSize: "0.8rem"}} className={s.old_price} >{oldPrice} грн</p>}
                     <p style={oldPrice>0 ? {fontSize: "1.1rem"}:null} >{price} грн</p>
                 </div>

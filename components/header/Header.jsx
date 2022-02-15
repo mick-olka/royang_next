@@ -5,7 +5,7 @@ import global_data from "../../utils/global_data";
 import Navbar from "../navbar/Navbar";
 import Image from 'next/image';
 
-const Header = ({links}) => {
+const Header = ({links, headerText}) => {
 
     const [headerBorder, setHeaderBorder] = useState(false);
     useEffect(() => {
@@ -57,7 +57,7 @@ const Header = ({links}) => {
                     </Link>
                 </div>
                 <div className={s.header_text_div}>
-                    <p style={{fontSize: "1.2rem"}}>Доставка по Києву - безкоштовно !</p>
+                    <p style={{fontSize: "1.2rem"}}>{headerText}</p>
                 </div>
                 <div className={s.phones_div}>
                     <ul>
@@ -72,7 +72,7 @@ const Header = ({links}) => {
                     </ul>
                 </div>
                 <div className={s.call_time_div}>
-                    <p>з 9:00 по 20:00</p>
+                    <p>9:00 - 20:00</p>
                 </div>
                 <div className={s.cart_div}>
                     <Link href="/order" passHref>

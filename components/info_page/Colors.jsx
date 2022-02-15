@@ -1,9 +1,10 @@
 import React from 'react';
 import s from "./InfoPage.module.css";
 import Image from "next/image";
+import {useRouter} from "next/router";
 
 function Colors({colors}) {
-
+    const {locale} = useRouter();
     const getImageByName = (name) => {
         let src;
         let colors0 = colors || [];
@@ -24,63 +25,62 @@ function Colors({colors}) {
                 <tbody>
                 <tr>
                     <td >
-                        <h1 className={s.article_header} >Вибір кольору</h1>
+                        <h1 className={s.article_header} >{locale==='ua'?"Вибір кольору":"Выбор цвета"}</h1>
                         <span >
-      <p><span><strong>1. Варіанти кольору меблів із натурального ротанга:</strong></span></p>
+      <p><span><strong>{locale==='ua'?"1. Варіанти кольору меблів із натурального ротанга:":"1. Варианты цвета мебели из натурального ротанга:"}</strong></span></p>
                              <br/><br/>
 <p>1.1. Коньяк</p>
-<p>{getImageByName('коньяк')}</p>
+<div>{getImageByName('коньяк')}</div>
 <p>1.2. Шоколад</p>
-<p>{getImageByName("шоколад")}</p>
+<div>{getImageByName("шоколад")}</div>
 <p>1.3. Олива</p>
-<p>{getImageByName("олива")}</p>
+<div>{getImageByName("олива")}</div>
 <p>1.4. Мед</p>
-<p>{getImageByName("мед")}</p>
-<p>1.5. Кава</p>
+<div>{getImageByName("мед")}</div>
+<p>{locale==='ua'?"1.5. Кава":"1.5. Кофе"}</p>
 <p>&nbsp;</p>
-<p>{getImageByName("кава")}</p>
+<div>{getImageByName("кава")}</div>
 <p>&nbsp;</p>
-<p><span><strong>2.Варіанти кольору плетіння для виробів із штучного ротанга:</strong></span></p>
-<p><span><strong>Цех плетіння №1</strong></span></p>
-                             <br/><br/>
-<h3>2.1. Білий</h3>
-<p>{getImageByName("білий")}</p>
-<p>{getImageByName("білий_столик")}</p>
-<h3>2.2. Крем</h3>
-<p>{getImageByName("крем")}</p>
-<p>{getImageByName("крем_крісло")}</p>
-<p>&nbsp;</p>
-<h3>2.3. Сірий</h3>
-<p>{getImageByName("сірий")}</p>
-<p>{getImageByName("сірий_крісло")}</p>
-<h3>2.4. Коричневий</h3>
-<p>{getImageByName("коричневий")}</p>
-<p>{getImageByName("коричневий_крісло")}</p>
-<h3>2.5. Графіт</h3>
-<p>{getImageByName("графіт")}</p>
-<p>{getImageByName("графіт_крісло")}</p>
-<h3>2.6. Чорний</h3>
-<p>{getImageByName("чорний")}</p>
-<p>{getImageByName("чорний_крісло")}</p>
-<p><span><strong>3.Варіанти кольору тканини для меблів зі штучного ротанга:</strong></span></p>
+<p><span><strong>{locale==='ua'?"2.Варіанти кольору плетіння для виробів із штучного ротанга:":"2.Варианты цвета плетения для изделий из исскуственного ротанга:"}</strong></span></p>
                             <br/><br/>
-<p><span><strong>Тканина №1</strong></span></p>
-<p><span><strong>&nbsp;</strong></span><span><strong>{getImageByName("тканина_1")}</strong></span></p>
+<h3>{locale==='ua'?"2.1. Білий":"2.1. Белый"}</h3>
+<div>{getImageByName("білий")}</div>
+<div>{getImageByName("білий_столик")}</div>
+<h3>2.2. Крем</h3>
+<div>{getImageByName("крем")}</div>
+<div>{getImageByName("крем_крісло")}</div>
+<p>&nbsp;</p>
+<h3>{locale==='ua'?"2.3. Сірий":"2.3. Серый"}</h3>
+<div>{getImageByName("сірий")}</div>
+<div>{getImageByName("сірий_крісло")}</div>
+<h3>{locale==='ua'?"2.4. Коричневий":"2.4. Коричневый"}</h3>
+<div>{getImageByName("коричневий")}</div>
+<div>{getImageByName("коричневий_крісло")}</div>
+<h3>{locale==='ua'?"2.5. Графіт":"2.5. Графит"}</h3>
+<div>{getImageByName("графіт")}</div>
+<div>{getImageByName("графіт_крісло")}</div>
+<h3>{locale==='ua'?"2.6. Чорний":"2.6. Чёрный"}</h3>
+<div>{getImageByName("чорний")}</div>
+<div>{getImageByName("чорний_крісло")}</div>
+<p><span><strong>{locale==='ua'?"3.Варіанти кольору тканини для меблів зі штучного ротанга:":"3.Варианты цвета ткани для мебели из штучного ротанга:"}</strong></span></p>
+                            <br/><br/>
+<p><span><strong>{locale==='ua'?"Тканина":"Ткань"} №1</strong></span></p>
+<div>{getImageByName("тканина_1")}</div>
 
-<p><span><strong><strong>Тканина №2</strong></strong></span></p>
-<p>{getImageByName("тканина_2")}</p>
+<p><span><strong><strong>{locale==='ua'?"Тканина":"Ткань"} №2</strong></strong></span></p>
+<div>{getImageByName("тканина_2")}</div>
 
-<p><span><strong><strong>Тканина №3</strong></strong></span></p>
-<p>{getImageByName("тканина_3")}</p>
-<p><span><strong><strong><strong><strong>Тканина №4</strong></strong></strong></strong></span></p>
-<p>{getImageByName("тканина_4")}</p>
-<p><span><strong>Тканина №5</strong></span></p>
-<p><span><strong>{getImageByName("тканина_5")}</strong></span></p>
+<p><span><strong><strong>{locale==='ua'?"Тканина":"Ткань"} №3</strong></strong></span></p>
+<div>{getImageByName("тканина_3")}</div>
+<p><span><strong><strong><strong><strong>{locale==='ua'?"Тканина":"Ткань"} №4</strong></strong></strong></strong></span></p>
+<div>{getImageByName("тканина_4")}</div>
+<p><span><strong>{locale==='ua'?"Тканина":"Ткань"} №5</strong></span></p>
+<div>{getImageByName("тканина_5")}</div>
 <p><span
-><strong><strong><strong><strong><strong><strong>Тканина №6 з пропиткою</strong></strong></strong></strong></strong></strong></span></p>
-<p>{getImageByName("тканина_6_пропитка")}</p>
-<p><span><strong>Тканина №7 з пропиткою</strong></span></p>
-<p><span>{getImageByName("тканина_7_пропитка")}</span></p>
+><strong><strong><strong><strong><strong><strong>{locale==='ua'?"Тканина №6 з":"Ткань №6 с"} пропиткою</strong></strong></strong></strong></strong></strong></span></p>
+<div>{getImageByName("тканина_6_пропитка")}</div>
+<p><span><strong>{locale==='ua'?"Тканина №7 з":"Ткань №7 с"} пропиткою</strong></span></p>
+<div>{getImageByName("тканина_7_пропитка")}</div>
     </span>
                     </td>
 

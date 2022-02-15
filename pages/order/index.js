@@ -1,18 +1,18 @@
 import OrderPage from "../../components/order_page/OrderPage";
 import MainLayout from "../../components/MainLayout";
-import {fetchNewOrder, getAllLists} from "../../lib/fetch_data";
+import {fetchNewOrder, getLayoutData} from "../../lib/fetch_data";
 import {useEffect} from "react";
 
 export async function getStaticProps({ params, locale }) {
-    const lists = await getAllLists(locale);
+    const layoutData = await getLayoutData(locale);
     return {
         props: {
-            lists
+            layoutData
         },
         // revalidate: 5,
     }
 }
-export default function OrderIndexPage ({orderPageProps, lists}) {
+export default function OrderIndexPage ({orderPageProps, layoutData}) {
     const cartData = orderPageProps.cartData;
 
     useEffect(()=> {
@@ -38,7 +38,7 @@ export default function OrderIndexPage ({orderPageProps, lists}) {
 
 
     return (
-        <MainLayout lists={lists} >
+        <MainLayout layoutData={layoutData} >
             <OrderPage
                 cartData={cartData}
                 setCartData={orderPageProps.setCartData}

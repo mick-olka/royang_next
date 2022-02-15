@@ -18,8 +18,9 @@
     position: fixed;
     padding-left: 1rem;
     z-index: 500;
-    top: 8rem;
+    top: 10rem;
     transition: left 0.5s;
+    width: 15rem;
 }
 
 .header {
@@ -75,17 +76,17 @@
 .locales_div {
     display: flex;
     justify-content: center;
-    margin: 0.2rem 0 0.2rem 0.5rem;
-    font-size: 2rem;
+    margin: 0.3rem auto;
+    font-size: 1rem;
     border: 1px solid grey;
     box-shadow: 0 0 3px grey;
-    width: 70%;
-    height: fit-content;
+    width: 6rem;
+    height: 2rem;
     border-radius: 7px;
 }
 
 .locale, .active_locale {
-    padding: 0 0 0.3rem;
+    padding: 0.3rem;
     width: 100%;
     text-align: center;
 }

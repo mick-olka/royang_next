@@ -1,25 +1,26 @@
 import Head from 'next/head'
 import MainLayout from "../../components/MainLayout";
-import {getAllLists, getColorsPhotos} from "../../lib/fetch_data";
+import {getAllLists, getColorsPhotos, getLayoutData} from "../../lib/fetch_data";
 import Colors from "../../components/info_page/Colors";
 
 
 export async function getStaticProps({ params, locale }) {
     const colors = await getColorsPhotos();
-    const lists = await getAllLists(locale);
+    const layoutData = await getLayoutData(locale);
     return {
         props: {
             colors,
-            lists
+            layoutData: layoutData,
+            locale
         },
         // revalidate: 5,
     }
 }
 
-export default function ColorsIndex({colors, lists}) {
+export default function ColorsIndex({colors, layoutData}) {
 
   return (
-      <MainLayout lists={lists} main>
+      <MainLayout layoutData={layoutData} main>
       <Head>
         <title>Colors</title>
       </Head>

@@ -6,6 +6,11 @@
     justify-content: center;
 }
 
+.paginator a {
+    font-size: 1.3rem;
+    text-decoration: underline;
+}
+
 .paginator span{
     display: inline-block;
     padding: 0.6rem;

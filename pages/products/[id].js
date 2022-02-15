@@ -1,15 +1,15 @@
 import MainLayout from "../../components/MainLayout";
-import {getAllLists, getAllProductsIds, getProduct} from "../../lib/fetch_data";
+import {getAllProductsIds, getLayoutData, getProduct} from "../../lib/fetch_data";
 import ProductPage from "../../components/products/product/ProductPage";
 import Head from "next/head";
 
 export async function getStaticProps({ params, locale }) {
     const prodData = await getProduct(params.id, locale);
-    const lists = await getAllLists(locale);
+    const layoutData = await getLayoutData(locale);
     return {
         props: {
             prodData,
-            lists
+            layoutData
         },
         revalidate: 5,
     }
@@ -27,8 +27,8 @@ export async function getStaticPaths() {
     }
 }
 
-export default function Product({prodData, orderPageProps, lists}) {
-    return <MainLayout lists={lists} >
+export default function Product({prodData, orderPageProps, layoutData, locale}) {
+    return <MainLayout layoutData={layoutData} >
         <Head>
             <title>{prodData.name}</title>
             <meta
@@ -37,7 +37,7 @@ export default function Product({prodData, orderPageProps, lists}) {
             />
         </Head>
         <div>
-            <ProductPage productData={prodData} addItemToCart={orderPageProps.addItemToCart} />
+            <ProductPage productData={prodData} addItemToCart={orderPageProps.addItemToCart} locale={locale} />
         </div>
     </MainLayout>
 }
