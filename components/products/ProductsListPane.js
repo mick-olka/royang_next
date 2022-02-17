@@ -44,7 +44,7 @@ export default function ProductsListPane ({prodList, paginatorData, headerText})
         <div>
             {loading ? <h2>Loader...</h2> :
                 <div>
-                    <h2 style={{margin: "1rem 0",textAlign: "center", fontSize: "1.5rem"}} >{headerText && headerText}</h2>
+                    { headerText && <><h2 style={{ marginLeft: "3rem", fontSize: "1.5rem"}} >Rotang \ {headerText && headerText}</h2> <hr/></>}
                     <div>
                         <SectionsPane products={products} />
                     </div>

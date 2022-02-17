@@ -37,7 +37,7 @@ export default function MainLayout({ children, layoutData }) {
                 <link rel="icon" href="/favicon.ico/" />
                 <meta
                     name="description"
-                    content="Ротангові меблі"
+                    content={layoutData.general_description.text}
                 />
                 <meta
                     property="og:image"
@@ -57,7 +57,7 @@ export default function MainLayout({ children, layoutData }) {
                     <div className={styles.locales_div}>
                         {locales.map((l, i)=> {
                             return <div key={i} className={l===locale ? styles.active_locale : styles.locale} >
-                                <Link href={asPath} locale={l} >{l}</Link>
+                                <Link href={asPath} locale={l} >{l==='ua'?'укр':'рус'}</Link>
                             </div>
                         })}
                     </div>

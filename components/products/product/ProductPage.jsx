@@ -69,9 +69,9 @@ function ProductPage({productData, addItemToCart, locale}) {
         setDescr( new DOMParser().parseFromString(productData.description, 'text/html') );
     }, []);
 
-
+    const prodType = productData.types[0];
     return (<div className={s.container} >
-
+            <h2 style={{marginLeft: "3rem"}} >Rotang \ {prodType[locale]} \ {productData.name}</h2>
             <div className={s.main_box}>
 
                 <div className={s.gallery}>

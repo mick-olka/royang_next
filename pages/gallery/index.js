@@ -2,27 +2,33 @@ import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 import Image from 'next/image';
 import MainLayout from "../../components/MainLayout";
-import { getGallery, getLayoutData} from "../../lib/fetch_data";
+import {getGallery, getLayoutData, getText} from "../../lib/fetch_data";
 import s from "../../components/info_page/InfoPage.module.css";
 
 export async function getStaticProps({ params, locale }) {
     const gallery = await getGallery();
     const layoutData = await getLayoutData(locale);
+    const description = await getText('gallery_page_description', locale);
     return {
         props: {
             gallery,
-            layoutData
+            layoutData,
+            description
         },
-        // revalidate: 5,
+        revalidate: 5,
     }
 }
 
-export default function GalleryIndex({gallery, layoutData}) {
+export default function GalleryIndex({gallery, layoutData, description}) {
 
   return (
       <MainLayout layoutData={layoutData} main>
       <Head>
-        <title>Gallery</title>
+        <title>Галерея Фото</title>
+          <meta
+              name="description"
+              content={description.text}
+          />
       </Head>
 
       <main className={styles.main}>

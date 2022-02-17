@@ -78,21 +78,25 @@
     justify-content: center;
     margin: 0.3rem auto;
     font-size: 1rem;
-    border: 1px solid grey;
-    box-shadow: 0 0 3px grey;
-    width: 6rem;
+    box-shadow: -1px 0 4px grey;
+    width: 8rem;
     height: 2rem;
     border-radius: 7px;
 }
 
 .locale, .active_locale {
-    padding: 0.3rem;
     width: 100%;
     text-align: center;
 }
 
+.locale a, .active_locale a {
+    position: relative;
+    top: 5px;
+    padding: 0.3rem 1rem;
+}
+
 .active_locale {
-    background-color: #d0d0d0;
+    background-color: #e1e1e1;
     font-weight: bolder;
 }
 

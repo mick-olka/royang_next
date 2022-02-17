@@ -1,6 +1,8 @@
 import {getAllListUrls, getLayoutData, getListProducts} from "../lib/fetch_data";
 import ProductsListPane from "../components/products/ProductsListPane";
 import MainLayout from "../components/MainLayout";
+import Head from "next/head";
+import React from "react";
 
 export async function getServerSideProps({ query, params, locale }) {   //  no query in getStaticProps
     let page = 1, limit = 50;
@@ -12,10 +14,11 @@ export async function getServerSideProps({ query, params, locale }) {   //  no q
             prodData,
             layoutData,
             paginator: {
-                page: page,
-                limit: limit,
+                page,
+                limit,
                 count: prodData.count,
             },
+            locale
         }
     }
 }
@@ -32,8 +35,11 @@ export async function getServerSidePaths() {
     }
 }
 
-export default function ProductsOfList({prodData, myProps, paginator, layoutData}) {
+export default function ProductsOfList({prodData, paginator, layoutData}) {
     return <MainLayout layoutData={layoutData} >
-        <ProductsListPane myProps={myProps} prodList={prodData.items} paginatorData={paginator} />
+        <Head>
+            <title>Rotang - {prodData.name}</title>
+        </Head>
+        <ProductsListPane headerText={prodData.name} prodList={prodData.items} paginatorData={paginator} />
     </MainLayout>
 }

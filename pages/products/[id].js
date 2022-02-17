@@ -9,7 +9,8 @@ export async function getStaticProps({ params, locale }) {
     return {
         props: {
             prodData,
-            layoutData
+            layoutData,
+            locale
         },
         revalidate: 5,
     }

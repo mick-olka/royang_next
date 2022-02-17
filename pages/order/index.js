@@ -1,18 +1,20 @@
 import OrderPage from "../../components/order_page/OrderPage";
 import MainLayout from "../../components/MainLayout";
 import {fetchNewOrder, getLayoutData} from "../../lib/fetch_data";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
+import Head from "next/head";
 
-export async function getStaticProps({ params, locale }) {
+export async function getStaticProps({ locale }) {
     const layoutData = await getLayoutData(locale);
     return {
         props: {
-            layoutData
+            layoutData,
+            locale
         },
         // revalidate: 5,
     }
 }
-export default function OrderIndexPage ({orderPageProps, layoutData}) {
+export default function OrderIndexPage ({orderPageProps, layoutData, locale}) {
     const cartData = orderPageProps.cartData;
 
     useEffect(()=> {
@@ -39,6 +41,9 @@ export default function OrderIndexPage ({orderPageProps, layoutData}) {
 
     return (
         <MainLayout layoutData={layoutData} >
+            <Head>
+                <title>Корзина</title>
+            </Head>
             <OrderPage
                 cartData={cartData}
                 setCartData={orderPageProps.setCartData}
