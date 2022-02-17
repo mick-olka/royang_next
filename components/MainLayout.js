@@ -5,7 +5,7 @@ import Navbar from "./navbar/Navbar";
 import Header from "./header/Header";
 import Search from "./search/Search";
 import s from "./header/Header.module.css";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import global_data from "../utils/global_data";
 import {useRouter} from "next/router";
 
@@ -14,6 +14,10 @@ export const siteTitle = 'Rotang.ua';
 export default function MainLayout({ children, layoutData }) {
 
     const {locale, locales, asPath} = useRouter();
+    const [navShow, setNavShow] = useState(false);
+    useEffect(()=>{
+        navShow ? document.getElementsByTagName('html')[0].style.overflow="hidden":document.getElementsByTagName('html')[0].style.overflow="auto";
+    }, [navShow]);
     const header_links = [
         {url: '/gallery', name: locale==="ua" ? "Галерея Фото":"Галерея Фото"},
         {url: '/colors', name: locale==="ua" ? "Вибір Кольору" : "Выбор цвета"},
@@ -46,10 +50,10 @@ export default function MainLayout({ children, layoutData }) {
                 <title>Rotang.ua</title>
             </Head>
 
-            <Header links={header_links} headerText={layoutData.headerText.text} />
+            <Header links={header_links} headerText={layoutData.headerText.text} navShow={navShow} setNavShow={setNavShow} />
 
             <main className={styles.main_block} >
-                <div className={styles.nav_pane} id="menu_pane" >
+                <div className={styles.nav_pane} id="menu_pane" style={navShow ? {left: "0"}:{left: "-110%"}} >
                     <div className={styles.locales_div}>
                         {locales.map((l, i)=> {
                             return <div key={i} className={l===locale ? styles.active_locale : styles.locale} >
@@ -57,13 +61,8 @@ export default function MainLayout({ children, layoutData }) {
                             </div>
                         })}
                     </div>
-                    <Search locale={locale} />
-                <Navbar links={types_list || []} />
+                    <Search locale={locale} onSearch={()=>setNavShow(false)} />
                     <div className={styles.mobile_list} >
-                        <br/>
-                        <Navbar links={header_links} />
-                        <br/>
-                        <h3 style={{fontSize: "1.3rem", fontWeight: "bolder"}} >Контакти</h3>
                         <div className={styles.menu_contacts} >
                             <ul>
                                 <li className={s.phone_li}><a href={"tel:" + global_data.phones[0]}>{global_data.phones[0]}</a>
@@ -75,7 +74,13 @@ export default function MainLayout({ children, layoutData }) {
                             </ul>
                             <p>9:00 - 20:00</p>
                         </div>
+                        <hr/>
+                        <Navbar links={header_links} onLinkClick={()=>setNavShow(false)} />
+                        <br/>
+                        <hr/>
                     </div>
+                <Navbar links={types_list || []} onLinkClick={()=>setNavShow(false)} />
+                    <br/>
                 </div>
             <div className={styles.content_pane} >{children}</div>
             </main>

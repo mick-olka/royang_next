@@ -1,5 +1,6 @@
 import React from 'react';
 import s from "./Paginator.module.css";
+import sh from "../header/Header.module.css";
 import {useRouter} from "next/router";
 import Link from "next/link";
 function Paginator({paginatorData, setPortionNum, onPageChanged}) {
@@ -48,7 +49,28 @@ function Paginator({paginatorData, setPortionNum, onPageChanged}) {
                 onPageChanged0(+page + 1)
             }}> {locale === 'ua' ? 'наступна' : 'следующая'} </button>
         </div>)
-    } else return <div className={s.paginator}><Link href={'/'} ><a>{locale === 'ua' ? 'На головну' : 'На главную'}</a></Link></div>;
+    } else return <div className={s.no_paginator}>
+        <Link href={'/'} ><a>{locale === 'ua' ? 'На головну' : 'На главную'}</a></Link>
+
+        <div className={sh.name_div}>
+            <Link href={'/'} passHref>
+                <a>
+                    <h1>
+                        <span className={sh.or_l}>R</span>
+                        <span className={sh.bor_l}>O</span>
+                        <span className={sh.or_l}>T</span>
+                        <span className={sh.bor_l}>A</span>
+                        <span className={sh.or_l}>N</span>
+                        <span className={sh.bor_l}>G</span>
+                        <span className={sh.or_l}
+                              style={{fontSize: "2rem", position: "relative", top: "-15px"}}>®</span>
+                    </h1>
+                </a>
+            </Link>
+        </div>
+        <div>
+        </div>
+    </div>;
 }
 
 export default Paginator;

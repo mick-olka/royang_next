@@ -1,16 +1,19 @@
 
 import OrderDone from "../../components/order_page/OrderDone";
-import {getLayoutData} from "../../lib/fetch_data";
+import {getLayoutData, getText} from "../../lib/fetch_data";
 import MainLayout from "../../components/MainLayout";
-export async function getServerSideProps({locale}) {
+import {useRouter} from "next/router";
+export async function getStaticProps({locale}) {
     const layoutData = await getLayoutData(locale);
+    const order_done_text_block = await getText('order_done', locale);
     return {
         props: {
-            layoutData
+            layoutData,
+            text: order_done_text_block.text
         },
-        // revalidate: 5,
+        revalidate: 5,
     }
 }
-export default function SearchResults({layoutData}) {
-    return <MainLayout layoutData={layoutData} > <OrderDone /> </MainLayout>;
+export default function SearchResults({layoutData, text}) {
+    return <MainLayout layoutData={layoutData} > <OrderDone text={text} /> </MainLayout>;
 }

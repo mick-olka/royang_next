@@ -109,7 +109,8 @@
 }
 
 .phone_li {
-    margin: 0.3rem;
+    margin: 0.4rem;
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 960px) {

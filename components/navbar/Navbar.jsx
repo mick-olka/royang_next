@@ -3,7 +3,7 @@ import s from "./Navbar.module.css";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-const Navbar = ({links}) => {
+const Navbar = ({links, onLinkClick}) => {
     const router = useRouter();
     let links0 = links.map(l=> {
         let path = '/'+router.query.listUrl;
@@ -12,7 +12,7 @@ const Navbar = ({links}) => {
         // otherwise site may take a hit on SEO.
         return (
                 <div className={s.linkDiv} key={l.url}>
-                    <Link href={l.url}><a className={path === l.url ? s.activeLink : ""} >{l.name}</a></Link>
+                    <Link href={l.url}><a className={path === l.url ? s.activeLink : ""} onClick={()=>{window.scrollTo(0, 0); onLinkClick();}} >{l.name}</a></Link>
                 </div>
             )
         }

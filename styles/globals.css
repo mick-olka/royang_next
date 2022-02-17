@@ -41,7 +41,7 @@ html {
 
 @media screen and (max-width: 960px) {
   .main_page_text {
-    top: 5rem;
+    top: -1rem;
   }
 }
 

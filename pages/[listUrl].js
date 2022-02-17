@@ -2,8 +2,8 @@ import {getAllListUrls, getLayoutData, getListProducts} from "../lib/fetch_data"
 import ProductsListPane from "../components/products/ProductsListPane";
 import MainLayout from "../components/MainLayout";
 
-export async function getServerSideProps({ query, params, locale }) {
-    let page = 1, limit = 3;
+export async function getServerSideProps({ query, params, locale }) {   //  no query in getStaticProps
+    let page = 1, limit = 50;
     if (query.page && query.page>0) page = query.page;
     const prodData = await getListProducts(params.listUrl, page, limit, locale);
     const layoutData = await getLayoutData(locale);
@@ -28,7 +28,7 @@ export async function getServerSidePaths() {
     });
     return {
         paths: pathsWithLocale,
-        fallback: false
+        fallback: false,
     }
 }
 

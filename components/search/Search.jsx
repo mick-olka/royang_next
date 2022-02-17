@@ -5,11 +5,14 @@ import s from "./Search.module.css";
 import Image from "next/image";
 import {useRouter} from "next/router";
 
-const Search = ({locale}) => {
+const Search = ({locale, onSearch}) => {
 
     const router = useRouter();
     const onSubmit = (string) => {
-        if (string.length>0) router.push(`search/?search=${string}&locale=${locale}`);
+        if (string.length>0) {
+            onSearch();
+            router.push(`search/?search=${string}&locale=${locale}`);
+        }
     }
 
     return (

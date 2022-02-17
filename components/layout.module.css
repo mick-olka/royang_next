@@ -96,6 +96,12 @@
     font-weight: bolder;
 }
 
+@media screen and (min-width: 960px) {
+    .nav_pane {
+        left: 0 !important;
+    }
+}
+
 @media screen and (max-width: 960px) {
     .container {
         margin: 5rem 0 0;
@@ -108,6 +114,7 @@
         height: 95%;
         padding: 1rem;
         overflow-y: auto;
+        margin-bottom: 3rem;
     }
     .content_pane {
         width: 96%;

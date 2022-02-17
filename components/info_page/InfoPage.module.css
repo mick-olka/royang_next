@@ -34,7 +34,7 @@
 }
 
 .article_part {
-    margin: 1rem 0;
+    margin: 0.5rem 0;
     text-indent: 5rem;
 }
 
@@ -64,15 +64,17 @@
 }
 
 @media screen and (max-width: 960px) {
-    .info_page {
-        width: 103%;
+    .info_page, .gallery_div {
+        width: 100%;
     }
-    .article_part {
-        font-size: 1.3rem;
-        text-indent: 2rem !important;
+    .article {
+        margin: 0.4rem;
+        font-size: 1.1rem;
+        text-indent: 1.5rem !important;
+        line-height: 2rem;
     }
     .article_header {
         margin: 1rem 0;
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 }

@@ -5,7 +5,7 @@ import global_data from "../../utils/global_data";
 import Navbar from "../navbar/Navbar";
 import Image from 'next/image';
 
-const Header = ({links, headerText}) => {
+const Header = ({links, headerText, navShow, setNavShow}) => {
 
     const [headerBorder, setHeaderBorder] = useState(false);
     useEffect(() => {
@@ -23,23 +23,10 @@ const Header = ({links, headerText}) => {
         boxShadow: headerBorder ? "2px 2px 3px 0 rgba(0,0,0,0.55)" : "none",
     }
 
-    const [navShow, setNavShow] = useState(false);
-    // useEffect(()=>{
-    //     const menu = document.getElementById("menu_pane");
-    //     if (navShow) {menu.style.left = "0"}
-    //     else {menu.style.left = "-15rem"}
-    // }, [navShow]);
-    const toggleMenu = () => {
-        setNavShow(!navShow);
-        const menu = document.getElementById("menu_pane");
-        if (!navShow) {menu.style.left = "0"}
-        else {menu.style.left = "-110%"}
-    }
-
     return (
         <div className={s.header_container} style={header_style}>
             <div className={s.header}>
-                <div className={s.menu_btn} onClick={()=>toggleMenu()} >{navShow ? "×" : "≡" }</div>
+                <div className={s.menu_btn} onClick={()=>setNavShow(!navShow)} >{navShow ? "×" : "≡" }</div>
                 <div className={s.name_div}>
                     <Link href={'/'} passHref>
                         <a>
