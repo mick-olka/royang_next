@@ -17,13 +17,13 @@ function ProductCard({name, thumbnail, price, oldPrice, _id, lessSpace, url_name
             <a>
         <div className={s.section} style={lessSpace && {display: "block"}} >
             {oldPrice>0 && <div className={s.sale_icon_div} >
-                    <Image src="/images/icons/coupon_color.png" width={50} height={50} alt="sale"/>
+                    <Image src="/images/icons/coupon_color.png" width={50} height={50} alt="скидка"/>
                 </div>}
                 <div className={s.imgPart} >
-                    <Image className={s.thumbnail} layout={"fill"} objectFit={"contain"} src={imgError? '/images/chair.png' : thumbnail || '/images/chair.png'} alt={"product"} onError={()=>onImgError()} />
+                    <Image className={s.thumbnail} layout={"fill"} objectFit={"contain"} src={imgError? '/images/chair.png' : thumbnail || '/images/chair.png'} alt={name[locale] || name + " фото"} onError={()=>onImgError()} />
                 </div>
                 <div className={s.infoPart} >
-                    <p>{name[locale] || name}</p>
+                    <h3>{name[locale] || name}</h3>
                     {oldPrice>0 && <p style={{fontSize: "0.8rem"}} className={s.old_price} >{oldPrice} грн</p>}
                     <p style={oldPrice>0 ? {fontSize: "1.1rem"}:null} >{price} грн</p>
                 </div>

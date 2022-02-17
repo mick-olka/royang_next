@@ -3,7 +3,7 @@ import Carousel from "react-gallery-carousel";
 import 'react-gallery-carousel/dist/index.css';
 import s from "./Slider.module.css";
 
-function Slider({photos}) {
+function Slider({photos, prodName}) {
     //  photos = [ {src}, {src} ]
     let images = [[900, 200], [200, 200], [500, 200], [500, 300]].map((size) => ({
         src: `https://placedog.net/${size[0]}/${size[1]}`,
@@ -12,7 +12,7 @@ function Slider({photos}) {
     if (photos) {
         images = photos.map(p=>({
             src: p.src,
-            alt: "Loading..."
+            alt: `${prodName} ${p.mainColor} ${p.pillColor}`
         }));
     }
     return (

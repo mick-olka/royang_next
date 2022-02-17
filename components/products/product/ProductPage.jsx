@@ -37,7 +37,7 @@ function ProductPage({productData, addItemToCart, locale}) {
             photo: photos[0].pathArr[0]
         });
         setChosenPhotos(photos[0].pathArr.map(p => {
-            return {src: p}
+            return {src: p, mainColor: p.mainColor, pillColor: p.pillColor}
         }));
     }
 
@@ -61,7 +61,7 @@ function ProductPage({productData, addItemToCart, locale}) {
     let allImgs = [];
     for (let i = 0; i < productData.images.length; i++) {
         for (let t = 0; t < productData.images[i].pathArr.length; t++) {
-            allImgs.push({src: productData.images[i].pathArr[t]});
+            allImgs.push({src: productData.images[i].pathArr[t], mainColor: productData.images[i].mainColor, pillColor: productData.images[i].pillColor});
         }
     }
 
@@ -75,7 +75,7 @@ function ProductPage({productData, addItemToCart, locale}) {
             <div className={s.main_box}>
 
                 <div className={s.gallery}>
-                    <Slider photos={chosenPhotos.length < 1 ? allImgs : chosenPhotos}/>
+                    <Slider photos={chosenPhotos.length < 1 ? allImgs : chosenPhotos} prodName={productData.name} />
                 </div>
 
                 <div className={s.info_box}>
