@@ -86,7 +86,7 @@
 
 .locales_div hr {
     border: 0.01rem solid #a2a2a2;
-    margin: 0.1rem 0 0;
+    margin: 0;
     width: 2rem;
     align-self: center;
 }
@@ -117,7 +117,7 @@
         margin: 5rem 0 0;
     }
     .nav_pane {
-        top: 4rem;
+        top: 3.5rem;
         left: -110%;
         background-color: #fff;
         width: 100%;
