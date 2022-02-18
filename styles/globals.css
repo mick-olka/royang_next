@@ -45,6 +45,21 @@ html {
   font-size: 1.5rem;
 }
 
+.page_404 {
+  width: 25rem;
+  text-align: center;
+  font-size: 3rem;
+  height: 35rem;
+  margin: 5rem auto 0;
+  color: #574d28;
+  font-weight: bolder;
+}
+.page_404 h1 {
+  margin: 4rem;
+  font-size: 6rem;
+  color: rgba(255, 176, 83, 0.67);
+}
+
 @media screen and (max-width: 960px) {
   .main_page_text {
     top: -1rem;

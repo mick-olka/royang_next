@@ -9,6 +9,7 @@ export async function getServerSideProps({ query, params, locale }) {   //  no q
     if (query.page && query.page>0) page = query.page;
     const prodData = await getListProducts(params.listUrl, page, limit, locale);
     const layoutData = await getLayoutData(locale);
+    if (prodData.error) return {notFound: true}
     return {
         props: {
             prodData,
