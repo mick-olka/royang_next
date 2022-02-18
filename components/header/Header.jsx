@@ -4,6 +4,7 @@ import Link from 'next/link'
 import global_data from "../../utils/global_data";
 import Navbar from "../navbar/Navbar";
 import Image from 'next/image';
+import LocalesPane from "../locales/LocalesPane";
 
 const Header = ({links, headerText, navShow, setNavShow}) => {
 
@@ -62,6 +63,9 @@ const Header = ({links, headerText, navShow, setNavShow}) => {
                     <p>9:00 - 20:00</p>
                 </div>
                 <div className={s.cart_div}>
+                    <div style={{position: "relative", top: "-0.5rem", marginRight: "0.5rem"}} >
+                    <LocalesPane />
+                    </div>
                     <Link href="/order" passHref>
                         <a>
                             <Image className={s.cart_icon} width={40} height={40}

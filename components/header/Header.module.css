@@ -76,6 +76,7 @@
 .cart_div {
     grid-area: c;
     /*flex: 1 1 auto;*/
+    display: flex;
     margin: 1rem 3rem;
     position: relative;
     min-width: 3rem !important;
