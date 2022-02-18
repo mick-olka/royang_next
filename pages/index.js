@@ -4,7 +4,7 @@ import {useRouter} from "next/router";
 import MainLayout from "../components/MainLayout";
 
 export async function getServerSideProps({query, locale}) {
-    let page = 1, limit = 50;
+    let page = 1, limit = 16;
     if (query.page && query.page>0) page = query.page;
     const prodData = await getProductsList(page, limit, locale);
     const layoutData = await getLayoutData(locale);

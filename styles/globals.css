@@ -39,6 +39,12 @@ html {
   margin: 1rem;
 }
 
+.bread_cramps {
+  margin-left: 3rem;
+  color: #505050;
+  font-size: 1.5rem;
+}
+
 @media screen and (max-width: 960px) {
   .main_page_text {
     top: -1rem;

@@ -16,17 +16,18 @@ export async function getServerSideProps({query, locale}) {
                 page: page,
                 limit: limit,
                 count: prodData.count,
-            }
+            },
+            locale
         }
     }
 }
 
-export default function SearchResults({prodData, myProps, paginator, pattern, layoutData}) {
+export default function SearchResults({prodData, myProps, paginator, pattern, layoutData, locale}) {
     return <MainLayout layoutData={layoutData} >
         <ProductsListPane myProps={myProps}
                              prodList={prodData.result}
                              paginatorData={paginator}
-                          headerText={`Результати пошуку по "${pattern}"`}
+                          headerText={locale==='ua'?`Результати пошуку "${pattern}"`:`Результаты поиска "${pattern}"`}
         />
     </MainLayout>
 }

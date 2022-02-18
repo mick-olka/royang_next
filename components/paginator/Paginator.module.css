@@ -38,12 +38,19 @@
     background-color: transparent;
 }
 
+.change_page:disabled {
+    color: #d0d0d0;
+}
+
 .change_portion {
     border-radius: 0.4rem;
     height: 2.5rem;
     padding: 0 0.5rem;
     margin: 1rem 1rem 0;
     font-size: 1.2rem;
+    background-color: #fff;
+    border: none;
+    box-shadow: 0 0 3px grey;
 }
 
 @media screen and (max-width: 960px) {

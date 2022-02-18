@@ -11,7 +11,7 @@ const Search = ({locale, onSearch}) => {
     const onSubmit = (string) => {
         if (string.length>0) {
             onSearch();
-            router.push(`search/?search=${string}&locale=${locale}`);
+            router.push(`/search/?search=${string}&locale=${locale}`);
         }
     }
 

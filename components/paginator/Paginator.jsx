@@ -11,10 +11,10 @@ function Paginator({paginatorData, setPortionNum, onPageChanged}) {
     let leftPortionEdge = (portionNum -1 )*portion ;
     let rightPortionEdge = (portionNum * portion);
 
-    const onPageChanged0 = (p) => {
-        onPageChanged(p);
-        let a = Math.ceil(p / portion);
-        setPortionNum(a);
+    const onPageChanged0 = (page) => {
+        onPageChanged(page);
+        let a = Math.ceil(page / portion);
+        setPortionNum(a===0?1:a);
     };
 
     let pages = [];
@@ -33,7 +33,7 @@ function Paginator({paginatorData, setPortionNum, onPageChanged}) {
 
     if (count>0 && count>limit) {
         return (<div className={s.paginator}>
-            <button className={s.change_page} disabled={page === 1} onClick={() => {
+            <button className={s.change_page} disabled={+page === 1} onClick={() => {
                 onPageChanged0(+page - 1)
             }}> {locale === 'ua' ? 'попередня' : 'предыдущая'} </button>
             <div>
@@ -45,7 +45,7 @@ function Paginator({paginatorData, setPortionNum, onPageChanged}) {
                     setPortionNum(portionNum + 1)
                 }}> {'>'} </button>}
             </div>
-            <button className={s.change_page} disabled={page === pagesCount} onClick={() => {
+            <button className={s.change_page} disabled={+page === +pagesCount} onClick={() => {
                 onPageChanged0(+page + 1)
             }}> {locale === 'ua' ? 'наступна' : 'следующая'} </button>
         </div>)

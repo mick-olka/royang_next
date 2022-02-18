@@ -56,7 +56,7 @@ export default function MainLayout({ children, layoutData }) {
                 <div className={styles.nav_pane} id="menu_pane" style={navShow ? {left: "0"}:{left: "-110%"}} >
                     <div className={styles.locales_div}>
                         {locales.map((l, i)=> {
-                            return <div key={i} className={l===locale ? styles.active_locale : styles.locale} >
+                            return <div key={i} className={l===locale ? styles.active_locale : styles.locale} onClick={()=>setNavShow(false)} >
                                 <Link href={asPath} locale={l} >{l==='ua'?'укр':'рус'}</Link>
                             </div>
                         })}

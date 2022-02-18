@@ -71,7 +71,7 @@ function ProductPage({productData, addItemToCart, locale}) {
 
     const prodType = productData.types[0];
     return (<div className={s.container} >
-            <h2 style={{marginLeft: "3rem"}} >Rotang \ {prodType[locale]} \ {productData.name}</h2>
+            <h2 className={'bread_cramps'} >Rotang {prodType && ` \ ${prodType[locale]} `}\ {productData.name}</h2>
             <div className={s.main_box}>
 
                 <div className={s.gallery}>
@@ -89,19 +89,24 @@ function ProductPage({productData, addItemToCart, locale}) {
                     </div>
 
                     <div className={s.colors_div}>
-                        <ColorMenu colors={colors} setColors={setColorsAndPhotos} reset={resetColorsAndPhotos} locale={locale} />
+                        {colors.length>1 &&
+                        <ColorMenu colors={colors} setColors={setColorsAndPhotos} reset={resetColorsAndPhotos}
+                                   locale={locale}/>
+                        }
                     </div>
 
                     <div className={s.orderInfo} >
-                        <span>Кількість</span>
+                        <span>{locale==='ua'?'Кількість':'Количество'}</span>
                         <input className={s.count_input} type="number" min="1" value={itemForCart.count} onChange={e => setCount(e.target.value)}/>
-                        <p><span>Колір каркасу: </span>{itemForCart.mainColor[locale] || "не вибрано"}</p>
-                        <p><span>Колір тканини: </span>{itemForCart.pillColor[locale] || "не вибрано"}</p>
+                        {colors.length > 1 && <>
+                        <p><span>{locale==='ua'?'Колір каркасу':'Цвет каркаса'}:</span>{itemForCart.mainColor[locale] || "пусто"}</p>
+                            <p><span>{locale==='ua'?'Колір тканини':'Цвет ткани'}:</span>{itemForCart.pillColor[locale] || "пусто"}</p></>
+                        }
                     </div>
 
                     {/*<button onClick={onClickAddItemToCart} className={s.toCart_btn} >Додати в кошик</button>*/}
                     <button onClick={()=>onClickAddItemToCart(itemForCart)} className={s.order_btn} >Замовити</button>
-                    <p>Або подзвоніть менеджеру щоб замовити*</p>
+                    <p>{locale==='ua'?'Або подзвоніть менеджеру щоб замовити':'Или позвоните чтобы заказать'}*</p>
 
                 </div>
 
@@ -120,14 +125,14 @@ function ProductPage({productData, addItemToCart, locale}) {
                 </div>
 
                 { productData.description && <div className={s.description_div} >
-                    <h2 style={{fontSize: "1.2rem", fontWeight: "bolder"}} onClick={()=>setDescrOpen(!descrOpen)} >Опис <span>{descrOpen?"▲":"▼"}</span> </h2>
+                    <h2 style={{fontSize: "1.2rem", fontWeight: "bolder"}} onClick={()=>setDescrOpen(!descrOpen)} >{locale==='ua'?'Опис':'Описание'}<span>{descrOpen?"▲":"▼"}</span> </h2>
                     <div className={s.description} style={descrOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} dangerouslySetInnerHTML={{ __html: productData.description }}>
                     </div>
                 </div> }
 
                 {productData.relatedProducts.length>0 &&
                 <div className={s.related_products_div}>
-                    <h2 onClick={()=>setRelatedOpen(!relatedOpen)} >Пов&apos;язані товари <span>{relatedOpen?"▲":"▼"}</span></h2>
+                    <h2 onClick={()=>setRelatedOpen(!relatedOpen)} >{locale==='ua'?"Пов'язані товари":"Связанные товары"} <span>{relatedOpen?"▲":"▼"}</span></h2>
                     <div className={s.features_list} style={relatedOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} >
                         <SectionsPane products={productData.relatedProducts}/>
                     </div>
@@ -136,7 +141,7 @@ function ProductPage({productData, addItemToCart, locale}) {
 
                 {productData.similarProducts.length>0 &&
                 <div className={s.similar_products_div}>
-                    <h2 onClick={()=>setSimilarOpen(!similarOpen)} >Схожі товари <span>{similarOpen?"▲":"▼"}</span></h2>
+                    <h2 onClick={()=>setSimilarOpen(!similarOpen)} >{locale==='ua'?"Схожі товари":'Похожие товары'} <span>{similarOpen?"▲":"▼"}</span></h2>
                     <div className={s.features_list} style={similarOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} >
                     <SectionsPane products={productData.similarProducts}/>
                     </div>
