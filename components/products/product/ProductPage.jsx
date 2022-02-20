@@ -69,9 +69,9 @@ function ProductPage({productData, addItemToCart, locale}) {
         setDescr( new DOMParser().parseFromString(productData.description, 'text/html') );
     }, []);
 
-    const prodType = productData.types[0];
+    const prodType = productData.types[0] ? productData.types[0].name : null;
     return (<div className={s.container} >
-            <h2 className={'bread_cramps'} >Rotang {prodType && ` \ ${prodType[locale]} `}\ {productData.name}</h2>
+            <h2 className={'bread_cramps'} >Rotang {prodType && ` / ${prodType[locale]} `}/ {productData.name}</h2>
             <div className={s.main_box}>
 
                 <div className={s.gallery}>

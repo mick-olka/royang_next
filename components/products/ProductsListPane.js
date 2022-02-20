@@ -44,7 +44,7 @@ export default function ProductsListPane ({prodList, paginatorData, headerText})
         <div>
             {loading ? <h2>Loader...</h2> :
                 <div>
-                    { headerText && <><h2 className={'bread_cramps'} >Rotang \ {headerText && headerText}</h2> <hr/></>}
+                    { headerText && <><h2 className={'bread_cramps'} >Rotang / {headerText && headerText}</h2> <hr/></>}
                     <div>
                         <SectionsPane products={products} />
                     </div>
