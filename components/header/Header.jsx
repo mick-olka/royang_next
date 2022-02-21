@@ -56,7 +56,7 @@ const Header = ({links, headerText, navShow, setNavShow}) => {
                     </Link>
                     </div>
                     <div className={s.contacts_block_mobile} >
-                        <p onClick={()=>setShowPhones(!showPhones)} id='phones_popup_btn' >+380963963930 {showPhones?'△':'▽'}</p>
+                        <p onClick={()=>setShowPhones(!showPhones)} className={s.phones_popup_btn} >+38 {global_data.phones[0]} {showPhones?'△':'▽'}</p>
                         <div className={s.phones_popup} style={showPhones?{display: "block"}:{display: "none"}} >
                         {phones_ul()}
                     </div></div>

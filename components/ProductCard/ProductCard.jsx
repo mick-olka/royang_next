@@ -24,8 +24,9 @@ function ProductCard({name, thumbnail, price, oldPrice, _id, lessSpace, url_name
                 </div>
                 <div className={s.infoPart} >
                     <h3>{name[locale] || name}</h3>
-                    {oldPrice>0 && <p style={{fontSize: "0.8rem"}} className={s.old_price} >{oldPrice} грн</p>}
-                    <p style={oldPrice>0 ? {fontSize: "1.1rem"}:null} >{price} грн</p>
+                    <p className={s.price} style={oldPrice>0 ? {fontSize: "1.1rem", color: "#ff4e4e"}:null} >
+                        {oldPrice>0 && <span style={{fontSize: "0.8rem"}} className={s.old_price} >{oldPrice} грн</span>}
+                        {price} грн</p>
                 </div>
         </div>
             </a>

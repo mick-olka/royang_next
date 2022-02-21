@@ -1,14 +1,11 @@
 .header {
     width: 100%;
-    /*background-color: #eee8d5;*/
     display: grid;
     grid-template: "l l t t t p p ct c";
-    /*border-bottom: 1px solid var(--c_black_purple);*/
-    /*box-shadow: 2px 2px 3px 0 rgba(0,0,0,0.55);*/
 }
 
 .header_container {
-    min-width: 50rem;
+    min-width: 360px;
     width: 100%;
     top: 0;
     position: fixed;
@@ -76,7 +73,6 @@
 
 .cart_div {
     grid-area: c;
-    /*flex: 1 1 auto;*/
     display: flex;
     justify-content: center;
     margin: 1rem 3rem;
@@ -86,7 +82,8 @@
 }
 
 .cart_icon {
-
+    min-width: 2rem !important;
+    min-height: 2rem !important;
 }
 
 .or_l {
@@ -132,6 +129,10 @@
     text-align: center;
     padding: 0 0 0.5rem;
     display: none;
+}
+
+.phones_popup_btn {
+    font-weight: 400;
 }
 
 .phones_popup a {

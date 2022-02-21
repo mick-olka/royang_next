@@ -105,7 +105,7 @@ function ProductPage({productData, addItemToCart, locale}) {
                     </div>
 
                     {/*<button onClick={onClickAddItemToCart} className={s.toCart_btn} >Додати в кошик</button>*/}
-                    <button onClick={()=>onClickAddItemToCart(itemForCart)} className={s.order_btn} >Замовити</button>
+                    <button onClick={()=>onClickAddItemToCart(itemForCart)} className={s.order_btn} >{locale==='ua'?'Замовити':'Заказать'}</button>
                     <p>{locale==='ua'?'Або подзвоніть менеджеру щоб замовити':'Или позвоните чтобы заказать'}*</p>
 
                 </div>

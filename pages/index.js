@@ -1,10 +1,9 @@
 import {getLayoutData, getProductsList, getText} from "../lib/fetch_data";
 import ProductsListPane from "../components/products/ProductsListPane";
-import {useRouter} from "next/router";
 import MainLayout from "../components/MainLayout";
 
 export async function getServerSideProps({query, locale}) {
-    let page = 1, limit = 16;
+    let page = 1, limit = 36;
     if (query.page && query.page>0) page = query.page;
     const prodData = await getProductsList(page, limit, locale);
     const layoutData = await getLayoutData(locale);
@@ -25,7 +24,6 @@ export async function getServerSideProps({query, locale}) {
 }
 
 export default function Products ({prodData, myProps, paginator, layoutData, main_page_text, main_page_lower_text}) {
-    const {locale, locales, asPath} = useRouter();
     return (<MainLayout layoutData={layoutData} >
             <div className={"main_page_text"} >
                 <p>{main_page_text}</p>

@@ -6,13 +6,24 @@
 }
 
 .sectionsPane {
-    margin: 0.1rem;
+    margin: 0.1rem auto;
     padding: 0.1rem;
-    /*border: 2px solid grey;*/
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 80rem;
 }
 
-.section {
+.sectionsPane > div {
+    max-width: 15rem;
+}
 
+.sectionsPane > div:hover {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 0 5px grey;
+}
+
+@media screen and (max-width: 960px) {
+    .sectionsPane {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
