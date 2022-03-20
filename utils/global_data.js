@@ -8,6 +8,7 @@ let global_data = {
     ],
     text_boxes: [],
     backURL: '185.65.245.26',
+    adminURL: '185.65.245.26:3005'
 }
 
 export default global_data;
