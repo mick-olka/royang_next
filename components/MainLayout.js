@@ -80,7 +80,7 @@ export default function MainLayout({ children, layoutData }) {
             </main>
 
             <footer className={styles.footer}>
-                <pre>Rotang.ua          |         <a style={{display: "inline"}} href={'http://192.168.1.164:3000'} rel="noopener noreferrer" target="_blank" >admin</a>           |           2022</pre>
+                <pre>Rotang.ua          |         <a style={{display: "inline"}} href={global_data.adminURL} rel="noopener noreferrer" target="_blank" >admin</a>           |           2022</pre>
             </footer>
         </div>
     )
