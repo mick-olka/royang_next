@@ -30,6 +30,7 @@ export async function getServerSidePaths() {
 }
 
 export default function Product({prodData, orderPageProps, layoutData, locale}) {
+    console.log(prodData.description);
     return <MainLayout layoutData={layoutData} >
         <Head>
             <title>{prodData.name}</title>

@@ -13,7 +13,7 @@ class MainDocument extends Document {
                     <link rel="preconnect" href="https://fonts.googleapis.com"/>
                     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
                     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Train+One&display=swap" rel="stylesheet"/>
-                    <link rel="shortcut icon" href="/favicon_rotang.ico/" />
+                    <link rel="shortcut icon" href="/favicon.ico/" />
                 </Head>
 
                 <body>
