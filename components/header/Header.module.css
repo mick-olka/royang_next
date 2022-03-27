@@ -42,7 +42,6 @@
 .header_name {
     font-family: 'Kanit', sans-serif;
     text-shadow: 1px 1px black;
-
 }
 
 .menu_btn {
@@ -102,6 +101,13 @@
     color: var(--c_grey);
 }
 
+.r_char {
+    color: var(--c_orange);
+    font-size: 2rem;
+    position: relative;
+    top: -15px;
+}
+
 .call_time_div {
     font-weight: bolder;
     margin-left: 0;
@@ -144,6 +150,8 @@
 
     .header {
         grid-template: "b b l l l l l l l l l l c c c" "t t t t t t t t t t t t t t t";
+        height: 4rem;
+        overflow: visible;
     }
 
     .name_div a {
@@ -153,8 +161,9 @@
 
     .name_div {
         font-size: 2rem;
-        margin: 0.5rem auto 0 !important;
+        margin: 0 auto 0 !important;
         padding: 0;
+        height: fit-content;
     }
 
     .header_container {
@@ -167,7 +176,7 @@
 
     .cart_div {
         margin: 0;
-        padding: 0.2rem 0 0;
+        padding: 0.1rem 0 0;
     }
 
     .cart_div a {
@@ -185,9 +194,12 @@
 
     .header_text_div {
         position: relative;
-        top: -0.3rem;
+        z-index: 1000;
     }
     .contacts_block_mobile {
         display: block;
+    }
+    .r_char {
+        font-size: 1rem;
     }
 }

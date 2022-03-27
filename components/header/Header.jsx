@@ -49,8 +49,7 @@ const Header = ({links, headerText, navShow, setNavShow}) => {
                                 <span className={s.bor_l}>A</span>
                                 <span className={s.or_l}>N</span>
                                 <span className={s.bor_l}>G</span>
-                                <span className={s.or_l}
-                                      style={{fontSize: "2rem", position: "relative", top: "-15px"}}>®</span>
+                                <span className={s.r_char}>®</span>
                             </h1>
                         </a>
                     </Link>
@@ -61,7 +60,7 @@ const Header = ({links, headerText, navShow, setNavShow}) => {
                         {phones_ul()}
                     </div></div>
                 </div>
-                <div className={s.header_text_div} style={headerBorder?{display: "none"}:{display: "inherit"}} >
+                <div className={s.header_text_div} >
                     <p style={{fontSize: "1.2rem"}}>{headerText}</p>
                 </div>
                 <div className={s.phones_div}>

@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import styles from './layout.module.css'
 import Navbar from "./navbar/Navbar";
 import Header from "./header/Header";
@@ -8,7 +7,6 @@ import s from "./header/Header.module.css";
 import React, {useEffect, useState} from "react";
 import global_data from "../utils/global_data";
 import {useRouter} from "next/router";
-import LocalesPane from "./locales/LocalesPane";
 
 export const siteTitle = 'Rotang.ua';
 
@@ -17,6 +15,7 @@ export default function MainLayout({ children, layoutData }) {
     const {locale, locales, asPath} = useRouter();
     const [navShow, setNavShow] = useState(false);
     useEffect(()=>{
+        //  for mobile navpane
         navShow ? document.getElementsByTagName('html')[0].style.overflow="hidden":document.getElementsByTagName('html')[0].style.overflow="auto";
     }, [navShow]);
     const header_links = [
@@ -80,7 +79,7 @@ export default function MainLayout({ children, layoutData }) {
             </main>
 
             <footer className={styles.footer}>
-                <pre>Rotang.ua          |         <a style={{display: "inline"}} href={global_data.adminURL} rel="noopener noreferrer" target="_blank" >admin</a>           |           2022</pre>
+                <pre>Rotang.ua          |         <a style={{display: "inline"}} href={global_data.adminURL} rel="noopener noreferrer" target="_blank" >вхід</a>           |           2022</pre>
             </footer>
         </div>
     )
