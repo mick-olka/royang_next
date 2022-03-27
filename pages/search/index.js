@@ -25,7 +25,7 @@ export async function getServerSideProps({query, locale}) {
 export default function SearchResults({prodData, myProps, paginator, pattern, layoutData, locale}) {
     return <MainLayout layoutData={layoutData} >
         <ProductsListPane myProps={myProps}
-                             prodList={prodData.result}
+                             prodList={prodData.products}
                              paginatorData={paginator}
                           headerText={locale==='ua'?`Результати пошуку "${pattern}"`:`Результаты поиска "${pattern}"`}
         />
