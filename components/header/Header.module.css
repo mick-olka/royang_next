@@ -3,7 +3,6 @@
     display: grid;
     grid-template: "l l t t t p p ct c";
 }
-
 .header_container {
     min-width: 360px;
     width: 100%;
@@ -12,24 +11,20 @@
     z-index: 100;
     background-color: #fff;
 }
-
 .horizontal_navbar {
     position: relative;
     width: 100%;
     z-index: 100;
     background-color: #fff;
 }
-
 .horizontal_navbar nav {
     display: flex !important;
     flex-wrap: wrap;
     justify-content: center;
 }
-
 .horizontal_navbar nav div {
     margin: 0 1rem 0.3rem;
 }
-
 .name_div{
     grid-area: l;
     color: var(--c_black_purple);
@@ -38,30 +33,25 @@
     padding: 0.5rem;
     margin: 0 2rem;
 }
-
 .header_name {
     font-family: 'Kanit', sans-serif;
     text-shadow: 1px 1px black;
 }
-
 .menu_btn {
     font-size: 3rem;
     grid-area: b;
     display: none;
     margin-left: 0.5rem;
 }
-
 .phones_div {
     grid-area: p;
     text-align: left;
     margin-left: auto;
     min-width: 9rem;
 }
-
 .call_time_div {
     grid-area: ct;
 }
-
 .header_text_div {
     grid-area: t;
     width: available;
@@ -69,7 +59,6 @@
     justify-content: center;
     align-items: center;
 }
-
 .cart_div {
     grid-area: c;
     display: flex;
@@ -79,52 +68,42 @@
     min-width: 3rem !important;
     min-height: 3rem !important;
 }
-
 .cart_icon {
     min-width: 2rem !important;
     min-height: 2rem !important;
 }
-
 .or_l {
     color: var(--c_orange);
 }
-
 .bor_l {
     color: var(--c_orange);
 }
-
 .bl_l {
     color: var(--c_black_purple);
 }
-
 .gr_l {
     color: var(--c_grey);
 }
-
 .r_char {
     color: var(--c_orange);
     font-size: 2rem;
     position: relative;
     top: -15px;
 }
-
 .call_time_div {
     font-weight: bolder;
     margin-left: 0;
     align-self: center;
 }
-
 .phone_li {
     margin: 0.4rem;
     text-decoration: underline;
 }
-
 .contacts_block_mobile {
     font-size: 1rem;
     display: none;
     height: 1rem;
 }
-
 .phones_popup {
     position: relative;
     overflow: visible;
@@ -136,16 +115,21 @@
     padding: 0 0 0.5rem;
     display: none;
 }
-
 .phones_popup_btn {
     font-weight: 400;
 }
-
 .phones_popup a {
     text-decoration: underline;
     padding: 0.5rem;
 }
-
+.mobile_links_columns {
+    display: flex;
+}
+.vertical {
+    position: relative;
+    left: -0.5rem;
+    border-left: 1px solid grey;
+}
 @media screen and (max-width: 960px) {
 
     .header {
@@ -153,45 +137,36 @@
         height: 4rem;
         overflow: visible;
     }
-
     .name_div a {
         display: inline-block;
         max-height: 1rem;
     }
-
     .name_div {
         font-size: 2rem;
         margin: 0 auto 0 !important;
         padding: 0;
         height: fit-content;
     }
-
     .header_container {
         min-width: 100%;
     }
-
     .menu_btn {
         display: block;
     }
-
     .cart_div {
         margin: 0;
         padding: 0.1rem 0 0;
     }
-
     .cart_div a {
         position: relative;
         right: 0;
     }
-
     .call_time_div, .phones_div {
         display: none;
     }
-
     .horizontal_navbar nav a {
         display: none;
     }
-
     .header_text_div {
         position: relative;
         z-index: 1000;

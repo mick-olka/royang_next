@@ -67,13 +67,16 @@ export default function MainLayout({ children, layoutData }) {
                             </ul>
                             <p>9:00 - 20:00</p>
                         </div>
-                        <hr/>
-                        <Navbar links={header_links} onLinkClick={()=>setNavShow(false)} />
+                        <div className={s.mobile_links_columns} >
+                            <Navbar links={types_list || []} onLinkClick={()=>setNavShow(false)} />
+                            <div className={s.vertical} />
+                            <Navbar links={header_links} onLinkClick={()=>setNavShow(false)} />
+                        </div>
                         <br/>
-                        <hr/>
                     </div>
-                <Navbar links={types_list || []} onLinkClick={()=>setNavShow(false)} />
-                    <br/>
+                    <div style={navShow ? {display: "none"}:{display: "block"}} >
+                    <Navbar links={types_list || []} onLinkClick={()=>setNavShow(false)} />
+                    </div>
                 </div>
             <div className={styles.content_pane} >{children}</div>
             </main>
