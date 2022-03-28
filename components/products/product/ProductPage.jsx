@@ -30,6 +30,7 @@ function ProductPage({productData, addItemToCart, locale}) {
 
     const setColorsAndPhotos = (photosId) => {
         let photos = productData.images.filter(p => p._id === photosId);
+        console.log(photos[0].mainColor);
         setItemForCart({
             ...itemForCart,
             mainColor: photos[0].mainColor, //  need to get index 0 because filter returns an array
@@ -99,8 +100,8 @@ function ProductPage({productData, addItemToCart, locale}) {
                         <span>{locale==='ua'?'Кількість':'Количество'}</span>
                         <input className={s.count_input} type="number" min="1" value={itemForCart.count} onChange={e => setCount(e.target.value)}/>
                         {colors.length > 1 && <>
-                        <p><span>{locale==='ua'?'Колір каркасу':'Цвет каркаса'}:</span>{itemForCart.mainColor[locale] || "пусто"}</p>
-                            <p><span>{locale==='ua'?'Колір тканини':'Цвет ткани'}:</span>{itemForCart.pillColor[locale] || "пусто"}</p></>
+                        <p>{locale==='ua'?'Колір каркасу':'Цвет каркаса'}: <span>{itemForCart.mainColor || "пусто"}</span></p>
+                            <p>{locale==='ua'?'Колір тканини':'Цвет ткани'}: <span>{itemForCart.pillColor || "пусто"}</span></p></>
                         }
                     </div>
 
