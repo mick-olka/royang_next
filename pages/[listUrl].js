@@ -39,7 +39,12 @@ export async function getServerSidePaths() {
 export default function ProductsOfList({prodData, paginator, layoutData}) {
     return <MainLayout layoutData={layoutData} >
         <Head>
-            <title>Rotang - {prodData.name}</title>
+            <title>Rotang-{prodData.name}</title>
+            <meta
+                name="description"
+                content={prodData.description}
+            />
+            <meta name="keywords" content={prodData.keywords.join(', ')} />
         </Head>
         <ProductsListPane headerText={prodData.name} prodList={prodData.items} paginatorData={paginator} />
     </MainLayout>
