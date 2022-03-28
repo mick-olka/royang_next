@@ -38,6 +38,7 @@ export default function Product({prodData, orderPageProps, layoutData, locale}) 
                 name="description"
                 content={prodData.description}
             />
+            <meta name="keywords" content={prodData.keywords.join(', ')} />
         </Head>
         <div>
             <ProductPage productData={prodData} addItemToCart={orderPageProps.addItemToCart} locale={locale} />
