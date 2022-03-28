@@ -60,6 +60,10 @@ html {
   color: rgba(255, 176, 83, 0.67);
 }
 
+button svg {
+  stroke: #000000 !important;
+}
+
 @media screen and (max-width: 960px) {
   .main_page_text {
     top: -1rem;

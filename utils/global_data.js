@@ -8,6 +8,6 @@ let global_data = {
     ],
     text_boxes: [],
     backURL: '192.168.0.113',
-    adminURL: 'http://192.168.0.103:3005/'
+    adminURL: 'http://192.168.0.113:3005/'
 }
 module.exports = global_data;
