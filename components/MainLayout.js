@@ -21,12 +21,12 @@ export default function MainLayout({ children, layoutData }) {
     const header_links = [
         {url: '/gallery', name: locale==="ua" ? "Галерея Фото":"Галерея Фото"},
         {url: '/colors', name: locale==="ua" ? "Вибір Кольору" : "Выбор цвета"},
-        {url: '/info#delivery', name: locale==="ua" ? "Про Доставку" : "Про доставку"},
-        {url: '/info#contacts', name: locale==="ua" ? "Контакти" : "Контакты"},
         {url: '/info#discounts', name: locale==="ua" ? "Знижки" : "Скидки"},
-        {url: '/info#plastic_rotang', name: locale==="ua" ? "Про Полі-Ротанг" : "Про Поли-ротанг"},
-        {url: '/info#rotang', name: locale==="ua" ? "Про Ротанг" : "Про Ротанг"},
+        // {url: '/info#plastic_rotang', name: locale==="ua" ? "Про Полі-Ротанг" : "Про Поли-ротанг"},
+        {url: '/info#delivery', name: locale==="ua" ? "Доставка" : "Доставка"},
         {url: '/info#payment', name: locale==="ua" ? "Оплата" : "Оплата"},
+        {url: '/info#contacts', name: locale==="ua" ? "Контакти" : "Контакты"},
+        {url: '/info#rotang', name: locale==="ua" ? "Про Ротанг" : "Про Ротанг"},
     ];
     const types_list = layoutData.lists.map(l=>{
         return {...l, url: "/"+l.url};
