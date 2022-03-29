@@ -172,7 +172,7 @@
     }
     .header_text_div {
         position: relative;
-        z-index: 1000;
+        z-index: 200;
     }
     .contacts_block_mobile {
         display: block;

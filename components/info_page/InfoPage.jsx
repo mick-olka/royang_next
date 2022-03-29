@@ -14,7 +14,7 @@ function InfoPage({text_data}) {
         <div className={s.info_page}>
 
             <div className={s.article}>
-                <span id={"discounts"}> </span>
+                <span style={{height: "1px"}} id={"discounts"}> </span>
                 <Sales text = {text_data.about_discounts.text} />
             </div>
 
