@@ -7,10 +7,10 @@ import {useRouter} from "next/router";
 function ProductCard({name, thumbnail, price, oldPrice, _id, lessSpace, url_name}) {
     const {locale} = useRouter();
     const [imgError, setImgError] = useState(false);
-    // const onImgError = () => {
-    //     setImgError(true);
-    //     patchProduct(_id, {index: -1});
-    // }
+    const onImgError = () => {
+        setImgError(true);
+        // patchProduct(_id, {index: -1});
+    }
     return (<div>
         <Link href={"/products/"+url_name} passHref >
             <a>
