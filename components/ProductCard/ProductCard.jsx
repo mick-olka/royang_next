@@ -2,16 +2,15 @@ import React, {useState} from 'react';
 import s from "./ProductCard.module.css";
 import Link from 'next/link';
 import Image from 'next/image';
-import {patchProduct} from "../../lib/fetch_data";
 import {useRouter} from "next/router";
 
 function ProductCard({name, thumbnail, price, oldPrice, _id, lessSpace, url_name}) {
     const {locale} = useRouter();
     const [imgError, setImgError] = useState(false);
-    const onImgError = () => {
-        setImgError(true);
-        patchProduct(_id, {index: -1});
-    }
+    // const onImgError = () => {
+    //     setImgError(true);
+    //     patchProduct(_id, {index: -1});
+    // }
     return (<div>
         <Link href={"/products/"+url_name} passHref >
             <a>
