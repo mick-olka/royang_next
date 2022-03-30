@@ -12,7 +12,8 @@ function Slider({photos, prodName}) {
     if (photos) {
         images = photos.map(p=>({
             src: p.src,
-            alt: `${prodName} ${p.mainColor} ${p.pillColor}`
+            alt: `${prodName} ${p.mainColor} ${p.pillColor}`,
+            title: `${prodName} ${p.mainColor} ${p.pillColor}`,
         }));
     }
     return (

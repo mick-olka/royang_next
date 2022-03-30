@@ -72,7 +72,7 @@ function ProductPage({productData, addItemToCart, locale}) {
 
     const prodType = productData.types[0] ? productData.types[0].name : null;
     return (<div className={s.container} >
-            <h2 className={'bread_cramps'} >Rotang {prodType && ` / ${prodType[locale]} `}/ {productData.name}</h2>
+            <p className={'bread_cramps'} >Rotang {prodType && ` / ${prodType[locale]} `}/ {productData.name}</p>
             <div className={s.main_box}>
 
                 <div className={s.gallery}>
@@ -81,7 +81,7 @@ function ProductPage({productData, addItemToCart, locale}) {
 
                 <div className={s.info_box}>
                     <div className={s.nameDiv}>
-                        <h2 className={s.name}>{productData.name}</h2>
+                        <h1 className={s.name}>{productData.name}</h1>
                     </div>
                     <div className={s.price_box}>
 
@@ -117,7 +117,7 @@ function ProductPage({productData, addItemToCart, locale}) {
             <div className={s.extra_box}>
 
                 <div className={s.features_div}>
-                    <h2 onClick={()=>setFeaturesOpen(!featuresOpen)} >Характеристики <span>{featuresOpen?"▲":"▼"}</span></h2>
+                    <h3 onClick={()=>setFeaturesOpen(!featuresOpen)} >Характеристики <span>{featuresOpen?"▲":"▼"}</span></h3>
                     <div className={s.features_list} style={featuresOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} >
                     {productData.features && productData.features.map(f => {
                         return <p key={f.key}>{f.key} : <span>{f.value}</span></p>
@@ -126,14 +126,14 @@ function ProductPage({productData, addItemToCart, locale}) {
                 </div>
 
                 { productData.description && <div className={s.description_div} >
-                    <h2 style={{fontSize: "1.2rem", fontWeight: "bolder"}} onClick={()=>setDescrOpen(!descrOpen)} >{locale==='ua'?'Опис':'Описание'}<span>{descrOpen?"▲":"▼"}</span> </h2>
+                    <h3 style={{fontSize: "1.2rem", fontWeight: "bolder"}} onClick={()=>setDescrOpen(!descrOpen)} >{locale==='ua'?'Опис':'Описание'}<span>{descrOpen?"▲":"▼"}</span> </h3>
                     <div className={s.description} style={descrOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} dangerouslySetInnerHTML={{ __html: productData.description }}>
                     </div>
                 </div> }
 
                 {productData.relatedProducts.length>0 &&
                 <div className={s.related_products_div}>
-                    <h2 onClick={()=>setRelatedOpen(!relatedOpen)} >{locale==='ua'?"Пов'язані товари":"Связанные товары"} <span>{relatedOpen?"▲":"▼"}</span></h2>
+                    <h3 onClick={()=>setRelatedOpen(!relatedOpen)} >{locale==='ua'?"Пов'язані товари":"Связанные товары"} <span>{relatedOpen?"▲":"▼"}</span></h3>
                     <div className={s.features_list} style={relatedOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} >
                         <SectionsPane products={productData.relatedProducts}/>
                     </div>
@@ -142,7 +142,7 @@ function ProductPage({productData, addItemToCart, locale}) {
 
                 {productData.similarProducts.length>0 &&
                 <div className={s.similar_products_div}>
-                    <h2 onClick={()=>setSimilarOpen(!similarOpen)} >{locale==='ua'?"Схожі товари":'Похожие товары'} <span>{similarOpen?"▲":"▼"}</span></h2>
+                    <h3 onClick={()=>setSimilarOpen(!similarOpen)} >{locale==='ua'?"Схожі товари":'Похожие товары'} <span>{similarOpen?"▲":"▼"}</span></h3>
                     <div className={s.features_list} style={similarOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} >
                     <SectionsPane products={productData.similarProducts}/>
                     </div>

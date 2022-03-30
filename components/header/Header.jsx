@@ -42,7 +42,7 @@ const Header = ({links, headerText, navShow, setNavShow}) => {
                     <div className={s.header_name} >
                     <Link href={'/'} passHref>
                         <a>
-                            <h1>
+                            <h2>
                                 <span className={s.or_l}>R</span>
                                 <span className={s.bor_l}>O</span>
                                 <span className={s.or_l}>T</span>
@@ -50,7 +50,7 @@ const Header = ({links, headerText, navShow, setNavShow}) => {
                                 <span className={s.or_l}>N</span>
                                 <span className={s.bor_l}>G</span>
                                 <span className={s.r_char}>®</span>
-                            </h1>
+                            </h2>
                         </a>
                     </Link>
                     </div>
@@ -61,7 +61,7 @@ const Header = ({links, headerText, navShow, setNavShow}) => {
                     </div></div>
                 </div>
                 <div className={s.header_text_div} >
-                    <p style={{fontSize: "1.2rem"}}>{headerText}</p>
+                    <h2 style={{fontSize: "1.2rem"}}>{headerText}</h2>
                 </div>
                 <div className={s.phones_div}>
                     {phones_ul()}
@@ -76,7 +76,7 @@ const Header = ({links, headerText, navShow, setNavShow}) => {
                     <Link href="/order" passHref>
                         <a>
                             <Image className={s.cart_icon} width={40} height={40}
-                                   src='/images/icons/laundry-basket_color.png' alt="cart_icon"/>
+                                   src='/images/icons/laundry-basket_color.png' alt="cart_icon" title="корзина" />
                         </a>
                     </Link>
                 </div>

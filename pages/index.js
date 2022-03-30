@@ -26,8 +26,8 @@ export async function getServerSideProps({query, locale}) {
 export default function Products ({prodData, myProps, paginator, layoutData, main_page_text, main_page_lower_text}) {
     return (<MainLayout layoutData={layoutData} >
             <div className={"main_page_text"} >
-                <p>{main_page_text}</p>
-                <p>{main_page_lower_text}</p>
+                <h2>{main_page_text}</h2>
+                <h2>{main_page_lower_text}</h2>
             </div>
         <ProductsListPane myProps={myProps} prodList={prodData.products} paginatorData={paginator} />
         </MainLayout>
