@@ -10,7 +10,7 @@ import {useRouter} from "next/router";
 
 export const siteTitle = 'Rotang.ua';
 
-export default function MainLayout({ children, layoutData }) {
+export default function MainLayout({ children, layoutData, adminURL }) {
 
     const {locale, locales, asPath} = useRouter();
     const [navShow, setNavShow] = useState(false);
@@ -82,7 +82,7 @@ export default function MainLayout({ children, layoutData }) {
             </main>
 
             <footer className={styles.footer}>
-                <pre>Rotang.ua          |         <a style={{display: "inline"}} href={global_data.adminURL} rel="noopener noreferrer" target="_blank" >вхід</a>           |           2022</pre>
+                <pre>Rotang.ua          |         <a style={{display: "inline"}} href={adminURL ? adminURL : global_data.adminURL} rel="noopener noreferrer" target="_blank" >вхід</a>           |           2022</pre>
             </footer>
         </div>
     )

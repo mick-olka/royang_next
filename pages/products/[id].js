@@ -3,6 +3,7 @@ import {getAllProductsIds, getLayoutData, getProduct} from "../../lib/fetch_data
 import ProductPage from "../../components/products/product/ProductPage";
 import Head from "next/head";
 import {useRouter} from "next/router";
+import global_data from "../../utils/global_data";
 
 export async function getServerSideProps({ params, locale }) {
     const prodData = await getProduct(params.id, locale);
@@ -30,8 +31,7 @@ export async function getServerSidePaths() {
 }
 
 export default function Product({prodData, orderPageProps, layoutData, locale}) {
-    console.log(prodData.description);
-    return <MainLayout layoutData={layoutData} >
+    return <MainLayout layoutData={layoutData} adminURL={global_data.adminURL+'admin/products/'+prodData.url_name} >
         <Head>
             <title>{prodData.name}</title>
             <meta
