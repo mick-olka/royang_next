@@ -2,7 +2,6 @@ import MainLayout from "../../components/MainLayout";
 import {getAllProductsIds, getLayoutData, getProduct} from "../../lib/fetch_data";
 import ProductPage from "../../components/products/product/ProductPage";
 import Head from "next/head";
-import {useRouter} from "next/router";
 import global_data from "../../utils/global_data";
 
 export async function getServerSideProps({ params, locale }) {

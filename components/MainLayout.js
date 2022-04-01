@@ -12,7 +12,7 @@ export const siteTitle = 'Rotang.ua';
 
 export default function MainLayout({ children, layoutData, adminURL }) {
 
-    const {locale, locales, asPath} = useRouter();
+    const {locale} = useRouter();
     const [navShow, setNavShow] = useState(false);
     useEffect(()=>{
         //  for mobile navpane
