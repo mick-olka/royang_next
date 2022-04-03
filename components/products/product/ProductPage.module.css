@@ -9,13 +9,15 @@
     margin-left: 2rem;
 }
 
-.extra_box h3 {
+.extra_box b {
     padding: 0.5rem;
     width: 15rem;
     box-shadow: 0 0 5px #000;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 .gallery {
@@ -131,7 +133,7 @@
 .description, .features_list {
     height: auto;
     overflow: hidden;
-    transition: max-height 0.5s;
+    transition: max-height 0.3s;
     margin: 1rem;
 }
 

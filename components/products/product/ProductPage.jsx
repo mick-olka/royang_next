@@ -18,7 +18,7 @@ function ProductPage({productData, addItemToCart, locale}) {
     });
 
     const [chosenPhotos, setChosenPhotos] = useState([]);
-    const [descr, setDescr] = useState(null);
+    const [descrArr, setDescrArr] = useState(["Loading..."]);
     const [descrOpen, setDescrOpen] = useState(false);
     const [similarOpen, setSimilarOpen] = useState(false);
     const [relatedOpen, setRelatedOpen] = useState(false);
@@ -67,7 +67,8 @@ function ProductPage({productData, addItemToCart, locale}) {
     }
 
     useEffect(()=>{
-        setDescr( new DOMParser().parseFromString(productData.description, 'text/html') );
+        // setDescr( new DOMParser().parseFromString(productData.description, 'text/html') );
+        setDescrArr(productData.description.split('\n\n'));
     }, []);
 
     const prodType = productData.types[0] ? productData.types[0].name : null;
@@ -117,7 +118,7 @@ function ProductPage({productData, addItemToCart, locale}) {
             <div className={s.extra_box}>
 
                 <div className={s.features_div}>
-                    <h3 onClick={()=>setFeaturesOpen(!featuresOpen)} >Характеристики <span>{featuresOpen?"▲":"▼"}</span></h3>
+                    <b onClick={()=>setFeaturesOpen(!featuresOpen)} >Характеристики <span>{featuresOpen?"▲":"▼"}</span></b>
                     <div className={s.features_list} style={featuresOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} >
                     {productData.features && productData.features.map(f => {
                         return <p key={f.key}>{f.key} : <span>{f.value}</span></p>
@@ -126,14 +127,16 @@ function ProductPage({productData, addItemToCart, locale}) {
                 </div>
 
                 { productData.description && <div className={s.description_div} >
-                    <h3 style={{fontSize: "1.2rem", fontWeight: "bolder"}} onClick={()=>setDescrOpen(!descrOpen)} >{locale==='ua'?'Опис':'Описание'}<span>{descrOpen?"▲":"▼"}</span> </h3>
-                    <div className={s.description} style={descrOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} dangerouslySetInnerHTML={{ __html: productData.description }}>
-                    </div>
+                    <b onClick={()=>setDescrOpen(!descrOpen)} >{locale==='ua'?'Опис':'Описание'}<span>{descrOpen?"▲":"▼"}</span> </b>
+                    {descrArr.length > 1 ? <><h3 className={s.description} style={{display: 'none'}} dangerouslySetInnerHTML={{__html: descrArr[0]}}/>
+                    <div className={s.description} style={descrOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} dangerouslySetInnerHTML={{ __html: descrArr[1] }} /></> :
+                        <div className={s.description} style={descrOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} dangerouslySetInnerHTML={{ __html: descrArr[0] }} />
+                        }
                 </div> }
 
                 {productData.relatedProducts.length>0 &&
                 <div className={s.related_products_div}>
-                    <h3 onClick={()=>setRelatedOpen(!relatedOpen)} >{locale==='ua'?"Пов'язані товари":"Связанные товары"} <span>{relatedOpen?"▲":"▼"}</span></h3>
+                    <b onClick={()=>setRelatedOpen(!relatedOpen)} >{locale==='ua'?"Пов'язані товари":"Связанные товары"} <span>{relatedOpen?"▲":"▼"}</span></b>
                     <div className={s.features_list} style={relatedOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} >
                         <SectionsPane products={productData.relatedProducts}/>
                     </div>
@@ -142,7 +145,7 @@ function ProductPage({productData, addItemToCart, locale}) {
 
                 {productData.similarProducts.length>0 &&
                 <div className={s.similar_products_div}>
-                    <h3 onClick={()=>setSimilarOpen(!similarOpen)} >{locale==='ua'?"Схожі товари":'Похожие товары'} <span>{similarOpen?"▲":"▼"}</span></h3>
+                    <b onClick={()=>setSimilarOpen(!similarOpen)} >{locale==='ua'?"Схожі товари":'Похожие товары'} <span>{similarOpen?"▲":"▼"}</span></b>
                     <div className={s.features_list} style={similarOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} >
                     <SectionsPane products={productData.similarProducts}/>
                     </div>
