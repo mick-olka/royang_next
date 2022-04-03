@@ -61,7 +61,7 @@ const Header = ({links, headerText, navShow, setNavShow}) => {
                     </div></div>
                 </div>
                 <div className={s.header_text_div} >
-                    <h2 style={{fontSize: "1.2rem"}}>{headerText}</h2>
+                    <h2 style={{fontSize: "1rem", textAlign: 'center'}}>{headerText}</h2>
                 </div>
                 <div className={s.phones_div}>
                     {phones_ul()}
