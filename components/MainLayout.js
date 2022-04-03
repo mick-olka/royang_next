@@ -69,7 +69,7 @@ export default function MainLayout({ children, layoutData, adminURL }) {
                         </div>
                         <div className={s.mobile_links_columns} >
                             <Navbar links={types_list || []} onLinkClick={()=>setNavShow(false)} />
-                            <div className={s.vertical} />
+                            <p className={s.vertical} />
                             <Navbar links={header_links} onLinkClick={()=>setNavShow(false)} />
                         </div>
                         <br/>

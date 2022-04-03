@@ -18,7 +18,7 @@
 }
 
 @media screen and (max-width: 960px) {
-    .linkDiv {
-        font-size: 2rem;
+    .linkDiv a {
+        font-size: 1.3rem;
     }
 }

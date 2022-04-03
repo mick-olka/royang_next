@@ -123,10 +123,11 @@
     padding: 0.5rem;
 }
 .mobile_links_columns {
-    display: flex;
+    display: grid;
+    grid-template-columns: 14fr 1fr 15fr;
 }
 .mobile_links_columns div {
-    max-width: 50%;
+
 }
 .vertical {
     position: relative;
