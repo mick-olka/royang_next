@@ -5,9 +5,10 @@ import global_data from "../../utils/global_data";
 import Navbar from "../navbar/Navbar";
 import Image from 'next/image';
 import LocalesPane from "../locales/LocalesPane";
+import {useRouter} from "next/router";
 
 const Header = ({links, headerText, navShow, setNavShow}) => {
-
+    const {pathname} = useRouter();
     const [headerBorder, setHeaderBorder] = useState(false);
     const [showPhones, setShowPhones] = useState(false);    //  for mobiles
     const handleScroll = () => {
@@ -40,19 +41,29 @@ const Header = ({links, headerText, navShow, setNavShow}) => {
                 <div className={s.menu_btn} onClick={()=>setNavShow(!navShow)} >{navShow ? "×" : "≡" }</div>
                 <div className={s.name_div}>
                     <div className={s.header_name} >
-                    <Link href={'/'} passHref>
-                        <a>
-                            <h2>
-                                <span className={s.or_l}>R</span>
-                                <span className={s.bor_l}>O</span>
-                                <span className={s.or_l}>T</span>
-                                <span className={s.bor_l}>A</span>
-                                <span className={s.or_l}>N</span>
-                                <span className={s.bor_l}>G</span>
-                                <span className={s.r_char}>®</span>
-                            </h2>
-                        </a>
-                    </Link>
+                        {pathname === '/' ? <h2>
+                                        <span className={s.or_l}>R</span>
+                                        <span className={s.bor_l}>O</span>
+                                        <span className={s.or_l}>T</span>
+                                        <span className={s.bor_l}>A</span>
+                                        <span className={s.or_l}>N</span>
+                                        <span className={s.bor_l}>G</span>
+                                        <span className={s.r_char}>®</span>
+                                    </h2> :
+                            <Link href={'/'} passHref>
+                                <a>
+                                    <h2>
+                                        <span className={s.or_l}>R</span>
+                                        <span className={s.bor_l}>O</span>
+                                        <span className={s.or_l}>T</span>
+                                        <span className={s.bor_l}>A</span>
+                                        <span className={s.or_l}>N</span>
+                                        <span className={s.bor_l}>G</span>
+                                        <span className={s.r_char}>®</span>
+                                    </h2>
+                                </a>
+                            </Link>
+                        }
                     </div>
                     <div className={s.contacts_block_mobile} >
                         <p onClick={()=>setShowPhones(!showPhones)} className={s.phones_popup_btn} >+38 {global_data.phones[0]} {showPhones?'△':'▽'}</p>
