@@ -1,4 +1,4 @@
-import MainLayout from "../../components/MainLayout";
+import MainLayout, {siteTitle} from "../../components/MainLayout";
 import {getAllProductsIds, getLayoutData, getProduct} from "../../lib/fetch_data";
 import ProductPage from "../../components/products/product/ProductPage";
 import Head from "next/head";
@@ -30,13 +30,11 @@ export async function getServerSidePaths() {
 }
 
 export default function Product({prodData, orderPageProps, layoutData, locale}) {
-    return <MainLayout layoutData={layoutData} adminURL={global_data.adminURL+'admin/products/'+prodData.url_name} >
+    let updatedLayoutData = {...layoutData, og_title: prodData.name, og_description: prodData.description.split('\n')[0], og_image: prodData.thumbnail};
+    return <MainLayout layoutData={updatedLayoutData} adminURL={global_data.adminURL+'admin/products/'+prodData.url_name} >
         <Head>
             <title>{prodData.name}</title>
-            <meta
-                name="description"
-                content={prodData.description}
-            />
+            <meta name="description" content={prodData.description || layoutData.general_description.text} />
             <meta name="keywords" content={prodData.keywords.join(', ')} />
         </Head>
         <div>

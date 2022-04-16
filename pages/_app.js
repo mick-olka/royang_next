@@ -3,9 +3,11 @@ import '../styles/globals.css';
 import {useState} from "react";
 import {useRouter} from "next/router";
 import Head from "next/head";
+
+export const siteTitle = 'Rotang.ua';
+
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  const [color, setColor] = useState("blue");
   const [cartData, setCartData] = useState({
     cart: [],   //  for client
     name: "",
