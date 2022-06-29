@@ -38,7 +38,7 @@ export async function getServerSidePaths() {
 }
 
 export default function ProductsOfList({prodData, paginator, layoutData}) {
-    let updatedLayoutData = {...layoutData, og_title: prodData.name, og_description: prodData.description.split('\n')[0], og_image: prodData.items[0] ? prodData.items[0].thumbnail : global_data.og_def_img };
+    let updatedLayoutData = {...layoutData, og_title: prodData.name, og_description: prodData.description ? prodData.description.split('\n')[0] : null, og_image: prodData.items[0] ? prodData.items[0].thumbnail : global_data.og_def_img };
     return <MainLayout layoutData={updatedLayoutData} >
         <Head>
             <title>Rotang-{prodData.name}</title>

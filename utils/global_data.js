@@ -6,7 +6,7 @@ let global_data = {
         "(096) 565 90 71",
         "(095) 595 98 03",
     ],
-    og_def_img: 'http://127.0.0.1:3000/images/papasan.png',
+    og_def_img: 'http://185.65.245.26:3000/images/papasan_p.png',
     text_boxes: [],
     // backURL: '192.168.0.113',
     // adminURL: 'http://192.168.0.113:3005/'

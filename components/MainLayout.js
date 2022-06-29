@@ -38,11 +38,11 @@ export default function MainLayout({ children, layoutData, adminURL }) {
                 <meta name="description" content={layoutData.general_description.text}/>
                 <title>Rotang.ua</title>
 
-                <meta property="og:type" content="website"/>
+
                 <meta property="og:title" content={layoutData.og_title || siteTitle}/>
                 <meta property="og:description" content={layoutData.og_description || layoutData.general_description.text}/>
                 <meta property="og:site_name" content={siteTitle} />
-                <meta property="og:image" itemProp="image primaryImageOfPage" content={layoutData.og_image || global_data.og_def_img} />
+                <meta property="og:image" content={layoutData.og_image || global_data.og_def_img} />
             </Head>
 
             <Header links={header_links} headerText={layoutData.headerText.text} navShow={navShow} setNavShow={setNavShow} />
