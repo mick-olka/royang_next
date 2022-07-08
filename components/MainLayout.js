@@ -36,6 +36,7 @@ export default function MainLayout({ children, layoutData, adminURL }) {
             <Head>
                 <link rel="icon" href="/favicon.ico/" />
                 <meta name="description" content={layoutData.general_description.text}/>
+                <meta name="keywords" content={layoutData.general_keywords.text} />
                 <title>Rotang.ua</title>
 
 

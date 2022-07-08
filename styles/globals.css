@@ -39,6 +39,11 @@ html {
   margin: 1rem;
 }
 
+.main_page_text h1 {
+  text-transform: uppercase;
+  font-weight: 350;
+}
+
 .bread_cramps {
   margin-left: 3rem;
   color: #505050;
