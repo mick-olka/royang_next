@@ -31,7 +31,7 @@ export async function getServerSidePaths() {
 
 export default function Product({prodData, orderPageProps, layoutData, locale}) {
     let updatedLayoutData = {...layoutData, og_title: prodData.name, og_description: prodData.description ? prodData.description.split('\n')[0] : null, og_image: prodData.thumbnail};
-    return <MainLayout layoutData={updatedLayoutData} adminURL={global_data.adminURL+'admin/products/'+prodData.url_name} >
+    return <MainLayout layoutData={updatedLayoutData} adminURL={global_data.adminURL+'products/'+prodData.url_name} >
         <Head>
             <title>{prodData.name}</title>
             <meta name="description" content={prodData.description || layoutData.general_description.text} />
