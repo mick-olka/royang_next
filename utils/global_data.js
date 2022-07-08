@@ -9,8 +9,8 @@ let global_data = {
     og_def_img: 'https://rotang.biz/images/papasan_p.png',
     text_boxes: [],
     // backURL: '192.168.0.113',
-    adminURL: 'http://185.65.245.26:3005/',
+    // adminURL: 'http://185.65.245.26:3005/',
     backURL: 'rotang.biz',
-    // adminURL: 'https://rotang.biz/admin/'
+    adminURL: 'https://rotang.biz/admin/'
 }
 module.exports = global_data;
