@@ -43,7 +43,7 @@ let SearchForm = ({onSubmit, locale}) => {
                 onChange={formik.handleChange}
                 value={formik.values.search_input}
                 className={s.search_input}
-                placeholder={locale==="ua" ? "Пошук" : "Поиск"}
+                placeholder={locale==="ua" ? "Пошук" : "Search"}
             />
             <button type="submit" className={s.search_btn} >
                 <Image className={s.search_icon} width={25} height={25} src={"/images/icons/search.png"} alt="search"/>

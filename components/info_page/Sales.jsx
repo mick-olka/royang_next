@@ -8,7 +8,7 @@ function Sales({text}) {
     const {locale} = useRouter();
     return (
         <div>
-            <h2  className={s.article_header} >{locale==="ua"?"Знижки":"Скидки"}</h2>
+            <h2  className={s.article_header} >{locale==="ua"?"Знижки":"Discounts"}</h2>
             <br/>
             <div dangerouslySetInnerHTML={createMarkup(text)} />
         </div>

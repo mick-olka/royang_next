@@ -8,7 +8,7 @@ function Contacts({text}) {
     const {locale} = useRouter();
     return (
         <div>
-            <h2 className={s.article_header} >{locale==="ua"? "Контакти:":"Контакты"} </h2>
+            <h2 className={s.article_header} >{locale==="ua"? "Контакти:":"Contacts"} </h2>
 
                 <div dangerouslySetInnerHTML={createMarkup(text)} />
 

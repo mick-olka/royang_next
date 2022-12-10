@@ -35,7 +35,7 @@ function Paginator({paginatorData, setPortionNum, onPageChanged}) {
         return (<div className={s.paginator}>
             <button className={s.change_page} disabled={+page === 1} onClick={() => {
                 onPageChanged0(+page - 1)
-            }}> {locale === 'ua' ? 'попередня' : 'предыдущая'} </button>
+            }}> {locale === 'ua' ? 'попередня' : 'prev'} </button>
             <div>
                 {portionNum > 1 && <button className={s.change_portion} onClick={() => {
                     setPortionNum(+portionNum - 1)
@@ -47,10 +47,10 @@ function Paginator({paginatorData, setPortionNum, onPageChanged}) {
             </div>
             <button className={s.change_page} disabled={+page === +pagesCount} onClick={() => {
                 onPageChanged0(+page + 1)
-            }}> {locale === 'ua' ? 'наступна' : 'следующая'} </button>
+            }}> {locale === 'ua' ? 'наступна' : 'next'} </button>
         </div>)
     } else return <div className={s.no_paginator}>
-        <Link href={'/'} ><a>{locale === 'ua' ? 'На головну' : 'На главную'}</a></Link>
+        <Link href={'/'} ><a>{locale === 'ua' ? 'На головну' : 'Main Page'}</a></Link>
 
         <div className={sh.name_div}>
             <Link href={'/'} passHref>

@@ -13,7 +13,7 @@ function LocalesPane() {
             </div>
             <hr/>
             <div className={locale==='ru' ? styles.active_locale : styles.locale} >
-                <Link href={asPath} locale={'ru'} >RU</Link>
+                <Link href={asPath} locale={'ru'} >EN</Link>
             </div>
         </div>
     );

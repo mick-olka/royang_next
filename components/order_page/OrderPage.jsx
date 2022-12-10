@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-function OrderPage({cartData, setCartData, deleteItemByIndex, createOrder, updateItemCount}) {
+function OrderPage({cartData, setCartData, deleteItemByIndex, createOrder, updateItemCount, locale}) {
 
     const router = useRouter();
     const [alert, setAlert] =useState(null);  //  in case user haven't chosen product and pressed confirm
@@ -34,35 +34,35 @@ function OrderPage({cartData, setCartData, deleteItemByIndex, createOrder, updat
 
     return (
         <div className={s.container} >
-            <h1 className={s.heading_h} >Корзина</h1>
+            <h1 className={s.heading_h} >{locale==='ua' ? "Корзина" : "Cart" }</h1>
             <div className={s.cart_box}>
-                {cartData.cart.length<1 && <p>Корзина пуста</p>}
+                {cartData.cart.length<1 && <p>{locale === 'ua'? "Корзина пуста" : "Cart is empty"}</p>}
                 {cartData.cart.length>0 && cartData.cart.map((item, i)=>{
                     return <div key={item.code} className={s.cart_item} > {/*need more complex key*/}
                         <Image className={s.thumbnail} width={80} height={40} src={item.photo} alt="prod_img" />
                         <p><Link href={"products/"+item.product} passHref ><a>{item.name}</a></Link></p>
-                        <p>колір: {item.mainColor}/{item.pillColor}</p>
+                        <p> {locale === "ua" ? "колір" : "color"}: {item.mainColor}/{item.pillColor}</p>
                         <div>
-                        <b>к-ть: </b><input type="number" onChange={
+                        <b>{locale==='ua'?"к-ть":"amount"}: </b><input type="number" onChange={
                             (e) => {
                                 updateItemCount(i, e.target.value)
                             }}
                             min="1" value={item.count} />
                         </div>
-                        <p>вартість: {item.price*item.count}</p>
+                        <p>{locale==='ua'?"вартість":"summary"}: {item.price*item.count}</p>
                         <button className={s.delete_btn} onClick={() => {deleteItemByIndex(item.index)}} />
                     </div>
                 })}
 
             </div>
             <div style={{width: "fit-content", margin: "0 auto"}} >
-            <Link href="/" passHref ><a><p className={s.go_choose} >Продовжити покупки</p></a></Link>
+            <Link href="/" passHref ><a><p className={s.go_choose} >{locale==='ua'?"Продовжити покупки":"Continue shopping"}</p></a></Link>
             </div>
 
             <div className={s.form_box}>
-            <div><p className={s.sum_p} >Всього: {summ} грн</p></div>
+            <div><p className={s.sum_p} >{locale==='ua' ? `Всього: ${summ} грн` : `Total: ${summ} UAH`}</p></div>
 
-            <OrderForm onSubmit={onSubmit} cartData={cartData} setCartData={setCartData} />
+            <OrderForm onSubmit={onSubmit} cartData={cartData} setCartData={setCartData} locale={locale} />
             <div className={s.alert} >{alert}</div>
 
             </div>

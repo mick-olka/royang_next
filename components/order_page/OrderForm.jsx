@@ -30,7 +30,7 @@ const validate = values => {
     return errors;
 };
 
-function OrderForm({onSubmit, cartData, setCartData}) {
+function OrderForm({onSubmit, cartData, setCartData, locale}) {
     const handleChange = (e) => {
         setCartData({...cartData, [e.target.name]: e.target.value});
         //console.log({key: e.target.name, value: e.target.value});
@@ -50,31 +50,31 @@ function OrderForm({onSubmit, cartData, setCartData}) {
         <div>
             <form onSubmit={formik.handleSubmit}>
                 <div className={s.form_input_item} >
-                <label htmlFor="name">Ім&apos;я</label>
+                <label htmlFor="name">{locale === 'ua' ? 'Ім&apos;я' : 'Name'} </label>
                 {myFormInput("name", "text", cartData.name, (e)=>{handleChange(e); formik.handleChange(e)})}
                     {formik.errors.name ? <div>{formik.errors.name}</div> : null}
                 </div>
 
                 <div className={s.form_input_item} >
-                <label htmlFor="phone">Телефон</label>
+                <label htmlFor="phone">{locale==='ua' ? "Телефон" : "Phone"}</label>
                 {myFormInput("phone", "text", cartData.phone, (e)=>{handleChange(e); formik.handleChange(e)})}
                     {formik.errors.phone ? <div>{formik.errors.phone}</div> : null}
                 </div>
 
                 <div className={s.form_input_item} id={s.comment} >
-                <label htmlFor="message">Коментарій</label>
+                <label htmlFor="message">{locale==='ua' ? 'Коментарій' : 'Comment'}</label>
                     <textarea
                         id={"message"}
                         name={"message"}
                         rows={5}
                         onChange={(e)=>{handleChange(e); formik.handleChange(e)}}
                         value={cartData.message}
-                        placeholder={"Місце доставки, запитання"}
+                        placeholder={locale === 'ua' ? "Місце доставки, запитання" : 'Delivery address, questions'}
                     />
                 </div>
                 {formik.errors.message ? <div>{formik.errors.message}</div> : null}
 
-                <div><button className={s.submit_btn} type="submit" >Підтвердити  Замовлення</button></div>
+                <div><button className={s.submit_btn} type="submit" >{locale==='ua' ? 'Підтвердити  Замовлення' : 'Confirm Order'}</button></div>
             </form>
         </div>
     );

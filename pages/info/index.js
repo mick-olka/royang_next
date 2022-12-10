@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 import MainLayout from "../../components/MainLayout";
 import InfoPage from "../../components/info_page/InfoPage";
-import {getLayoutData, getText} from "../../lib/fetch_data";
+import { getLayoutData, getText } from "../../lib/fetch_data";
 
 export async function getStaticProps({ params, locale }) {
     const text_names = ['about_rotang', 'about_plastic_rotang', 'about_payment', 'about_delivery', 'about_discounts', 'about_contacts', 'info_page_description'];
@@ -17,7 +17,7 @@ export async function getStaticProps({ params, locale }) {
         getText('info_page_description', locale),
     ]);
     let text_data = {};
-    text_names.forEach((p, i)=>{text_data[p]=res[i+1]});
+    text_names.forEach((p, i) => { text_data[p] = res[i + 1] });
     return {
         props: {
             layoutData: res[0],
@@ -28,22 +28,22 @@ export async function getStaticProps({ params, locale }) {
     }
 }
 
-export default function MainInfo({layoutData, text_data, locale}) {
+export default function MainInfo({ layoutData, text_data, locale }) {
 
-  return (
-      <MainLayout layoutData={layoutData} main>
-      <Head>
-        <title>{locale==='ua'?'Інформація':'Информация'}</title>
-          <meta
-              name="description"
-              content={text_data.info_page_description.text}
-          />
-      </Head>
+    return (
+        <MainLayout layoutData={layoutData} main>
+            <Head>
+                <title>{locale === 'ua' ? 'Інформація' : 'Info'}</title>
+                <meta
+                    name="description"
+                    content={text_data.info_page_description.text}
+                />
+            </Head>
 
-      <main className={styles.main}>
-          <InfoPage text_data={text_data} />
-      </main>
+            <main className={styles.main}>
+                <InfoPage text_data={text_data} />
+            </main>
 
-      </MainLayout>
-  )
+        </MainLayout>
+    )
 }
