@@ -1,4 +1,4 @@
-
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import React from 'react';
 import {useFormik} from "formik";
 import s from "./Search.module.css";
@@ -46,7 +46,8 @@ let SearchForm = ({onSubmit, locale}) => {
                 placeholder={locale==="ua" ? "Пошук" : "Search"}
             />
             <button type="submit" className={s.search_btn} >
-                <Image className={s.search_icon} width={25} height={25} src={"/images/icons/search.png"} alt="search"/>
+                <SearchOutlinedIcon fontSize='medium' />
+                {/* <Image className={s.search_icon} width={25} height={25} src={"/images/icons/search.png"} alt="search"/> */}
             </button>
         </form>
     );

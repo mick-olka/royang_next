@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import s from "./ColorMenu.module.css"
+import s from "./ColorMenu.module.css";
+import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 function ColorMenu({colors, setColors, reset, locale}) {  //  colors = { name: Str, src: Url }
 
@@ -31,20 +32,21 @@ function ColorMenu({colors, setColors, reset, locale}) {  //  colors = { name: S
     });
 
     return (<div className={s.container}  >
-            <button onClick={toggleMenu} className={s.open_btn} >{isHidden? "Обрати колір" : "Закрити"}</button>
-            <button onClick={onReset} className={s.open_btn} >{ "Всі фото" }</button>
-        <div className={s.menu_box}
-             style={isHidden ?
-                 {display: "none"} :
-                 {display: "block"}}
-        >
-
+            <button onClick={toggleMenu} className={s.open_btn} >{locale==='ua' ? 'Кольори' : 'Colors'}</button>
+            {/* <button onClick={onReset} className={s.open_btn} >{locale==='ua' ? "Показати всі" : 'Show all' }</button> */}
+        { isHidden ? null : 
+        <ClickAwayListener onClickAway={toggleMenu} >
+        <div className={s.menu_box}>
+            <p style={{fontSize: '1.3rem', marginLeft: '1rem', fontWeight: '600'}}>{locale === 'ua' ? 'Каркас / Тканина' : 'Rotang / Fabric'}</p>
             {/*<button className={s.reset_btn} onClick={onReset} >скинути</button>*/}
             {/*<button className={s.x_btn} onClick={toggleMenu} > </button>*/}
+            <div onClick={onReset} className={s.item} >{locale==='ua' ? "Показати всі" : 'Show all' }</div>
 
             {items}
 
         </div>
+        </ClickAwayListener>
+        }
         </div>
     );
 }
