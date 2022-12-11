@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import s from "./ColorMenu.module.css";
 import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Button from '@mui/material/Button';
 
 function ColorMenu({colors, setColors, reset, locale}) {  //  colors = { name: Str, src: Url }
 
@@ -32,7 +33,7 @@ function ColorMenu({colors, setColors, reset, locale}) {  //  colors = { name: S
     });
 
     return (<div className={s.container}  >
-            <button onClick={toggleMenu} className={s.open_btn} >{locale==='ua' ? 'Кольори' : 'Colors'}</button>
+            <Button onClick={toggleMenu} className={s.open_btn} variant="outlined" >{locale==='ua' ? 'Обрати колір' : 'Colors'}</Button>
             {/* <button onClick={onReset} className={s.open_btn} >{locale==='ua' ? "Показати всі" : 'Show all' }</button> */}
         { isHidden ? null : 
         <ClickAwayListener onClickAway={toggleMenu} >

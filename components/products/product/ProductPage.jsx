@@ -1,8 +1,14 @@
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React, {useEffect, useState} from 'react';
 import s from "./ProductPage.module.css";
 import ColorMenu from "./ColorMenu";
 import SectionsPane from "../../SectionsPane/SectionsPane";
-import Slider from "../../slider/Slider";
+import MySlider from "../../slider/Slider";
+import Button from '@mui/material/Button';
+import Slider from '@mui/material/Slider';
 
 function ProductPage({productData, addItemToCart, locale}) {
 
@@ -77,7 +83,7 @@ function ProductPage({productData, addItemToCart, locale}) {
             <div className={s.main_box}>
 
                 <div className={s.gallery}>
-                    <Slider photos={chosenPhotos.length < 1 ? allImgs : chosenPhotos} prodName={productData.name} />
+                    <MySlider photos={chosenPhotos.length < 1 ? allImgs : chosenPhotos} prodName={productData.name} />
                 </div>
 
                 <div className={s.info_box}>
@@ -98,8 +104,9 @@ function ProductPage({productData, addItemToCart, locale}) {
                     </div>
 
                     <div className={s.orderInfo} >
-                        <span>{locale==='ua'?'Кількість':'Amount'}</span>
-                        <input className={s.count_input} type="number" min="1" value={itemForCart.count} onChange={e => setCount(e.target.value)}/>
+                        <div>{locale==='ua'?'Кількість':'Amount'}: {itemForCart.count}</div>
+                        <Slider aria-label="Amount" value={itemForCart.count} step={1} min={1} max={10} style={{maxWidth: '15rem'}} onChange={(event, newValue) => setCount(newValue)} />
+                        {/* <input className={s.count_input} type="number" min="1" value={itemForCart.count} onChange={e => setCount(e.target.value)}/> */}
                         {colors.length > 1 && <>
                         <p>{locale==='ua'?'Колір каркасу':'Rotang color'}: <span>{itemForCart.mainColor || "..."}</span></p>
                             <p>{locale==='ua'?'Колір тканини':'Fabric color'}: <span>{itemForCart.pillColor || "..."}</span></p></>
@@ -107,7 +114,7 @@ function ProductPage({productData, addItemToCart, locale}) {
                     </div>
 
                     {/*<button onClick={onClickAddItemToCart} className={s.toCart_btn} >Додати в кошик</button>*/}
-                    <button onClick={()=>onClickAddItemToCart(itemForCart)} className={s.order_btn} >{locale==='ua'?'Замовити':'Order'}</button>
+                    <Button variant="outlined" color="primary" onClick={()=>onClickAddItemToCart(itemForCart)} className={s.order_btn} >{locale==='ua'?'Замовити':'Order'}</Button>
                     <p>{locale==='ua'?'Або подзвоніть менеджеру щоб замовити':'Or call our manager to order'}*</p>
 
                 </div>
@@ -117,40 +124,90 @@ function ProductPage({productData, addItemToCart, locale}) {
 
             <div className={s.extra_box}>
 
-                <div className={s.features_div}>
+            <Accordion>
+                <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+            >
+                    <p style={{fontSize: '1.2rem', fontWeight: '700'}}>{locale==='ua' ? "Характеристики" : "Features"} </p>
+                </AccordionSummary>
+                <AccordionDetails>
+                    {productData.features && productData.features.map(f => {
+                        return <p key={f.key}>{f.key} : <span>{f.value}</span></p>
+                    })}
+                </AccordionDetails>
+            </Accordion>
+                {/* <div className={s.features_div}>
                     <b onClick={()=>setFeaturesOpen(!featuresOpen)} >{locale==='ua' ? "Характеристики" : "Features"} <span>{featuresOpen?"▲":"▼"}</span></b>
                     <div className={s.features_list} style={featuresOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} >
                     {productData.features && productData.features.map(f => {
                         return <p key={f.key}>{f.key} : <span>{f.value}</span></p>
                     })}
                     </div>
-                </div>
-
-                { productData.description && <div className={s.description_div} >
+                </div> */}
+                { productData.description && <Accordion>
+                <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+            >
+                    <p style={{fontSize: '1.2rem', fontWeight: '700'}}>{locale==='ua'?'Опис':'Description'}</p>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <h3 className={s.description} dangerouslySetInnerHTML={{__html: descrArr[0]}}/>
+                    <div className={s.description} dangerouslySetInnerHTML={{ __html: descrArr[1] }} />
+                </AccordionDetails>
+            </Accordion> }
+                {/* { productData.description && <div className={s.description_div} >
                     <b onClick={()=>setDescrOpen(!descrOpen)} >{locale==='ua'?'Опис':'Description'}<span>{descrOpen?"▲":"▼"}</span> </b>
                     {descrArr.length > 1 ? <><h3 className={s.description} style={{display: 'none'}} dangerouslySetInnerHTML={{__html: descrArr[0]}}/>
                     <div className={s.description} style={descrOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} dangerouslySetInnerHTML={{ __html: descrArr[1] }} /></> :
                         <h3 className={s.description} style={descrOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} dangerouslySetInnerHTML={{ __html: descrArr[0] }} />
                         }
-                </div> }
+                </div> } */}
 
-                {productData.relatedProducts.length>0 &&
+            {productData.relatedProducts.length>0 && <Accordion>
+                <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+            >
+                    <p style={{fontSize: '1.2rem', fontWeight: '700'}}>{locale==='ua'?"Пов'язані товари":"Related products"}</p>
+                </AccordionSummary>
+                <AccordionDetails>
+                <SectionsPane products={productData.relatedProducts}/>
+                </AccordionDetails>
+            </Accordion> }
+                {/* {productData.relatedProducts.length>0 &&
                 <div className={s.related_products_div}>
                     <b onClick={()=>setRelatedOpen(!relatedOpen)} >{locale==='ua'?"Пов'язані товари":"Related products"} <span>{relatedOpen?"▲":"▼"}</span></b>
                     <div className={s.features_list} style={relatedOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} >
                         <SectionsPane products={productData.relatedProducts}/>
                     </div>
                 </div>
-                }
+                } */}
 
-                {productData.similarProducts.length>0 &&
+            {productData.similarProducts.length>0 && <Accordion>
+                <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+            >
+                    <p style={{fontSize: '1.2rem', fontWeight: '700'}}>{locale==='ua'?"Пов'язані товари":"Related products"}</p>
+                </AccordionSummary>
+                <AccordionDetails>
+                <SectionsPane products={productData.similarProducts}/>
+                </AccordionDetails>
+            </Accordion> }
+                {/* {productData.similarProducts.length>0 &&
                 <div className={s.similar_products_div}>
                     <b onClick={()=>setSimilarOpen(!similarOpen)} >{locale==='ua'?"Схожі товари":'Similar products'} <span>{similarOpen?"▲":"▼"}</span></b>
                     <div className={s.features_list} style={similarOpen ? {maxHeight: "50rem"}:{maxHeight: "0"}} >
                     <SectionsPane products={productData.similarProducts}/>
                     </div>
                 </div>
-                }
+                } */}
 
             </div>
 
