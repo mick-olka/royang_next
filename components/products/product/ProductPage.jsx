@@ -194,7 +194,7 @@ function ProductPage({productData, addItemToCart, locale}) {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
             >
-                    <p style={{fontSize: '1.2rem', fontWeight: '700'}}>{locale==='ua'?"Пов'язані товари":"Related products"}</p>
+                    <p style={{fontSize: '1.2rem', fontWeight: '700'}}>{locale==='ua'?"Схожі товари":"Similar products"}</p>
                 </AccordionSummary>
                 <AccordionDetails>
                 <SectionsPane products={productData.similarProducts}/>
