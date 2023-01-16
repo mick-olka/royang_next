@@ -5,7 +5,7 @@ module.exports = {
     domains: [global_data.backURL, '192.168.1.164', '178.54.240.228', '185.65.245.26'],
   },
   i18n: {
-    locales: ["ua", "ru"],
+    locales: ["ua", "en"],
     defaultLocale: "ua",
     localeDetection: false
   },

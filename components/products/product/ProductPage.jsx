@@ -75,11 +75,11 @@ function ProductPage({productData, addItemToCart, locale}) {
     useEffect(()=>{
         // setDescr( new DOMParser().parseFromString(productData.description, 'text/html') );
         setDescrArr(productData.description.split('\n\n'));
-    }, []);
+    }, [productData]);
 
     const prodType = productData.types[0] ? productData.types[0].name : null;
     return (<div className={s.container} >
-            <p className={'bread_cramps'} >Rotang {prodType && ` / ${prodType[locale]} `}/ {productData.name}</p>
+            <p className={'bread_cramps'} >Rotang {prodType && ` / ${prodType[locale === 'en' ? 'ru' : 'ua']} `}/ {productData.name}</p>
             <div className={s.main_box}>
 
                 <div className={s.gallery}>
