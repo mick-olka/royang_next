@@ -17,8 +17,8 @@ function ProductPage({productData, addItemToCart, locale}) {
         photo: productData.images[0]? productData.images[0].pathArr[0] : "/images/chair.png",
         name: productData.name,
         code: productData.code,
-        mainColor: "не вибрано",
-        pillColor: "не вибрано",
+        mainColor: "-",
+        pillColor: "-",
         count: 1,
         price: productData.price,   //  for sum
     });
@@ -52,8 +52,8 @@ function ProductPage({productData, addItemToCart, locale}) {
         setItemForCart({
             ...itemForCart,
             photo: productData.images[0].pathArr[0],
-            mainColor: "не вибрано",
-            pillColor: "не вибрано",
+            mainColor: "-",
+            pillColor: "-",
         });
         setChosenPhotos([]);
     }
