@@ -138,7 +138,7 @@
 
     .header {
         grid-template: "b b l l l l l l l l l l c c c" "t t t t t t t t t t t t t t t";
-        height: 4rem;
+        /* height: 4rem; */
         overflow: visible;
     }
     .name_div a {
@@ -162,13 +162,15 @@
         padding: 0.1rem 0 0;
     }
     .cart_div a {
+        min-width: 2.5rem;
+        min-height: 2.5rem;
         position: relative;
         right: 0;
     }
     .call_time_div, .phones_div {
         display: none;
     }
-    .horizontal_navbar nav a {
+    .horizontal_navbar {
         display: none;
     }
     .header_text_div {
@@ -180,5 +182,11 @@
     }
     .r_char {
         font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .header_text_div {
+        display: none;
     }
 }

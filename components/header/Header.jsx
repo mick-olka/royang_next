@@ -81,7 +81,7 @@ const Header = ({links, headerText, navShow, setNavShow}) => {
                     <p>9:00 - 20:00</p>
                 </div>
                 <div className={s.cart_div}>
-                    <div style={{position: "relative", top: "-0.5rem", marginRight: "0.5rem"}} >
+                    <div style={{position: "relative", top: "-0.5rem"}} >
                     <LocalesPane />
                     </div>
                     <Link href="/order" passHref>

@@ -1,10 +1,10 @@
-import {getLayoutData, getProductsList, getText} from "../lib/fetch_data";
+import { getLayoutData, getProductsList, getText } from "../lib/fetch_data";
 import ProductsListPane from "../components/products/ProductsListPane";
 import MainLayout from "../components/MainLayout";
 
-export async function getServerSideProps({query, locale}) {
+export async function getServerSideProps({ query, locale }) {
     let page = 1, limit = 36;
-    if (query.page && query.page>0) page = query.page;
+    if (query.page && query.page > 0) page = query.page;
     const prodData = await getProductsList(page, limit, locale);
     const layoutData = await getLayoutData(locale);
     const main_text = await Promise.all([getText("main_page_text", locale), getText("main_page_lower_text", locale)]);
@@ -18,18 +18,19 @@ export async function getServerSideProps({query, locale}) {
             },
             layoutData: layoutData,
             main_page_text: main_text[0].text,
-            main_page_lower_text: main_text[1].text
+            main_page_lower_text: main_text[1].text,
         }
     }
 }
 
-export default function Products ({prodData, myProps, paginator, layoutData, main_page_text, main_page_lower_text}) {
+export default function Products({ prodData, myProps, paginator, layoutData, main_page_text, main_page_lower_text }) {
     return (<MainLayout layoutData={layoutData} >
-            <div className={"main_page_text"} >
-                <h1>{main_page_text}</h1>
-                <h2>{main_page_lower_text}</h2>
-            </div>
+        <div className={"main_page_text"} >
+            <h3 id={'mobile_header_text'}>{layoutData.headerText.text}</h3>
+            <h1>{main_page_text}</h1>
+            <h2>{main_page_lower_text}</h2>
+        </div>
         <ProductsListPane myProps={myProps} prodList={prodData.products} paginatorData={paginator} />
-        </MainLayout>
+    </MainLayout>
     );
 }
