@@ -9,6 +9,7 @@ import SectionsPane from "../../SectionsPane/SectionsPane";
 import MySlider from "../../slider/Slider";
 import Button from '@mui/material/Button';
 import Slider from '@mui/material/Slider';
+import { TextField } from '@mui/material';
 
 function ProductPage({productData, addItemToCart, locale}) {
 
@@ -104,8 +105,9 @@ function ProductPage({productData, addItemToCart, locale}) {
                     </div>
 
                     <div className={s.orderInfo} >
-                        <div>{locale==='ua'?'Кількість':'Amount'}: {itemForCart.count}</div>
-                        <Slider aria-label="Amount" value={itemForCart.count} step={1} min={1} max={10} style={{maxWidth: '15rem'}} onChange={(event, newValue) => setCount(newValue)} />
+                        <div>{locale==='ua'?'Кількість':'Amount'}:</div>
+                        <TextField sx={{margin: '2px', width: '5rem'}} size='small' type="number" value={itemForCart.count} onChange={(e) => setCount(e.target.value)} />
+                        {/* <Slider aria-label="Amount" value={itemForCart.count} step={1} min={1} max={10} style={{maxWidth: '15rem'}} onChange={(event, newValue) => setCount(newValue)} /> */}
                         {/* <input className={s.count_input} type="number" min="1" value={itemForCart.count} onChange={e => setCount(e.target.value)}/> */}
                         {colors.length > 1 && <>
                         <p>{locale==='ua'?'Колір каркасу':'Rotang color'}: <span>{itemForCart.mainColor || "..."}</span></p>
